@@ -363,7 +363,7 @@ export const snippetsI18n = {
 
   ru: {
     'snippets.field.name': 'Название',
-    'snippets.field.scopeAria': 'Область действия сниппета',
+    'snippets.field.scopeAria': 'Область сниппета',
     'snippets.name.taken': 'Имя #{name} уже занято другим сниппетом',
     'snippets.name.invalid': 'Имя начинается с буквы или цифры и содержит только буквы, цифры, дефисы и подчёркивания',
     'snippets.toast.saved': 'Сохранено: #{name}',

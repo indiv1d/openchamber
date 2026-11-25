@@ -494,7 +494,7 @@ export const sidebarWorkI18n = {
     "sessions.sidebar.bulkActions.failedMarkDonePlural": "Не удалось отметить выполненными сессий: {count}",
     "sessions.sidebar.work.track.failed": "Не удалось поместить задачу в работу",
     "sessions.sidebar.work.openAria": "Открыть {label}",
-    "sessions.sidebar.work.worktreeMark": "Рабочее дерево",
+    "sessions.sidebar.work.worktreeMark": "Worktree",
     "sessions.sidebar.work.menu.label": "Меню задачи для {label}",
     "sessions.sidebar.work.menu.rename": "Переименовать задачу",
     "sessions.sidebar.work.menu.pin": "Закрепить задачу",

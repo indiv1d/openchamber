@@ -1277,8 +1277,8 @@ export const firstPartyIntegrationsI18n = {
   },
 
   ru: {
-    'settings.sourceControl.provider.description.pullRequest': 'Подключите аккаунт {provider} для запросов на слияние и задач.',
-    'settings.sourceControl.provider.description.mergeRequest': 'Подключите аккаунт {provider} для запросов на слияние, задач и CI.',
+    'settings.sourceControl.provider.description.pullRequest': 'Подключите аккаунт {provider} для PR и задач.',
+    'settings.sourceControl.provider.description.mergeRequest': 'Подключите аккаунт {provider} для MR, задач и CI.',
     'settings.sourceControl.provider.description.change': 'Подключите аккаунт {provider} для изменений и проверки кода.',
     'settings.integrations.firstParty.title': 'Встроенные интеграции',
     'settings.integrations.browse.label': 'Обзор интеграций',
@@ -1309,7 +1309,7 @@ export const firstPartyIntegrationsI18n = {
     'settings.integrations.tracker.toast.disconnectFailed': 'Не удалось отключить {provider}',
     'settings.integrations.tracker.toast.authorizationFailed': 'Время авторизации в {provider} истекло. Нажмите «Подключить», чтобы повторить.',
     'settings.integrations.tracker.avatarAlt': 'Аватар {name} в {provider}',
-    'settings.integrations.tracker.unknownUser': 'Неизвестный пользователь',
+    'settings.integrations.tracker.unknownUser': 'Неизвестный',
     'settings.integrations.tracker.updateApp': 'Обновите OpenChamber, чтобы подключить {provider} здесь.',
     'settings.integrations.tracker.extension.description': 'Отслеживает рабочие элементы через расширение {name}.',
     'settings.integrations.tracker.field.token': 'Токен API',

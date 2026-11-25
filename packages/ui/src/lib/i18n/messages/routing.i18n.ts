@@ -2136,7 +2136,7 @@ export const routingI18n = {
     'settings.routing.category.thinking': 'Рассуждение',
     'settings.routing.category.agent': 'Агент',
     'settings.routing.category.agentInfo': 'Выполняет эти задачи этим агентом. Если пусто, используется агент, который выбрал бы композер.',
-    'settings.routing.category.reset': 'Сбросить к значению по умолчанию',
+    'settings.routing.category.reset': 'Сбросить',
     'settings.routing.category.remove': 'Удалить',
     'settings.routing.category.restore': 'Восстановить {name}',
     'settings.routing.thinking.default': 'По умолчанию',

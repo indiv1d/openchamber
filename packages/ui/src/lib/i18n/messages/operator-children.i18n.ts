@@ -274,7 +274,7 @@ export const operatorChildrenI18n = {
   ru: {
     "chat.workflow.proposedBy": "Предложено в {title}",
     "sessions.sidebar.session.menu.takeOver": "Перехватить",
-    "chat.container.readOnlyOperatorChildPromptBanner": "Этой сессией управляет другой агент. Чтобы писать здесь, выберите «Перехватить» в её меню на боковой панели.",
+    "chat.container.readOnlyOperatorChildPromptBanner": "Этой сессией управляет другой агент. Чтобы писать здесь, выберите «Перехватить» в её меню на сайдбаре.",
     "chat.container.readOnlyFolderMissingBanner": "Папка этой сессии {name} больше не существует, поэтому сессия открыта только для чтения.",
     "chat.container.readOnlyFolderOutsideBanner": "Папка этой сессии {name} находится вне ваших проектов, поэтому сессия открыта только для чтения.",
     "sessions.sidebar.session.menuHint.takeOver": "Сделайте её своей сессией: она отделится от агента, который ею управляет, получит отдельную строку и сможет задавать вам вопросы.",

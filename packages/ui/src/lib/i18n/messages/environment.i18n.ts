@@ -608,7 +608,7 @@ export const environmentI18n = {
     'settings.environment.editor.loadFailed': 'Не удалось прочитать сохранённые переменные. Откройте настройки заново, чтобы повторить.',
     'settings.environment.editor.saveFailed': 'Не удалось сохранить переменную.',
     'settings.projects.environment.title': 'Окружение',
-    'settings.projects.environment.info': 'Добавляются в Git, терминал и действия проекта в этом проекте и его рабочих деревьях, поверх переменных из раздела «Общие». OpenCode обслуживает все проекты сразу, поэтому он их не получает.',
+    'settings.projects.environment.info': 'Добавляются в Git, терминал и действия проекта в этом проекте и его worktree, поверх переменных из раздела «Общие». OpenCode обслуживает все проекты сразу, поэтому он их не получает.',
     'settings.projects.environment.command.label': 'Команда окружения',
     'settings.projects.environment.command.info': 'Выполняется в папке проекта, и напечатанные ею переменные тоже добавляются. Например: direnv export json или devenv print-dev-env --json. Она выполняется снова при коммите, открытии терминала или запуске действия, если с прошлого запуска прошло несколько минут.',
     'settings.projects.environment.command.runAgain': 'Выполнить снова',

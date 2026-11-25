@@ -381,7 +381,7 @@ export const memoryDreamingI18n = {
     "rightSidebar.contextNotesTodo.memory.toDocs.action": "Переместить",
     "rightSidebar.contextNotesTodo.memory.toDocs.sessionTitle": "Память в документацию проекта",
     "rightSidebar.contextNotesTodo.memory.toDocs.failed": "Не удалось начать перенос записей.",
-    "settings.magicPrompts.sidebar.item.memoryToDocs": "Переместить в документацию",
+    "settings.magicPrompts.sidebar.item.memoryToDocs": "Перенести в доки",
     "settings.magicPrompts.page.group.memoryToDocs.title": "Память в документацию проекта",
     "settings.magicPrompts.page.group.memoryToDocs.description": "Запросы, которые используются, когда панель «Память» предлагает перенести записи в документацию агентов проекта: видимое сообщение пользователя и скрытые инструкции, за которыми идут записи. Агент добавляет каждую запись в нужный AGENTS.md, навык или документацию модуля, удаляет её из памяти и оставляет правки незакоммиченными.",
   },

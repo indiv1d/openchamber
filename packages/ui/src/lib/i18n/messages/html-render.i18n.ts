@@ -334,6 +334,6 @@ export const htmlRenderI18n = {
     'chat.htmlRender.answerFailed': 'Не удалось отправить ответ',
     'settings.openchamber.tools.field.agentRenderTool': 'Инструмент отрисовки агента',
     'settings.openchamber.tools.field.agentRenderToolAria': 'Инструмент отрисовки агента',
-    'settings.openchamber.tools.field.agentRenderToolSummary': 'Позволяет агентам показывать в чате графики, таблицы, диаграммы и макеты интерфейса в изоляции от ваших файлов и просить вас выбрать вариант прямо там.',
+    'settings.openchamber.tools.field.agentRenderToolSummary': 'Разрешить агентам показывать в чате графики, таблицы, диаграммы и макеты интерфейса в изоляции от ваших файлов и просить вас выбрать вариант прямо там.',
   },
 } as const;

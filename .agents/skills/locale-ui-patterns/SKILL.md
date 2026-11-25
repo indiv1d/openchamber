@@ -121,6 +121,8 @@ A new locale code lands in all of these in one change:
 
 ## Translation Boundary
 
+Russian follows the short developer style in `references/russian-glossary.md`.
+
 Translate visible text, placeholders, tooltips, dialogs, toasts, empty/error/loading states, and user-facing `aria-label`, `title`, and `alt` text.
 
 Keep these literal:

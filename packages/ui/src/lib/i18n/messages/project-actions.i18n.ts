@@ -266,7 +266,7 @@ export const projectActionsI18n = {
     'projectActions.dialog.empty': 'Подходящих действий нет',
     'projectActions.dialog.noProject': 'Откройте сессию в проекте, чтобы запускать его действия.',
     'projectActions.dialog.configure': 'Настроить действия',
-    'projectActions.dialog.footer.toggle': 'запустить или остановить',
+    'projectActions.dialog.footer.toggle': 'Запуск/стоп',
     'commandPalette.item.openProjectActions': 'Действия проекта',
     'commandPalette.item.runProjectAction': 'Запустить: {name}',
     'commandPalette.item.stopProjectAction': 'Остановить: {name}',

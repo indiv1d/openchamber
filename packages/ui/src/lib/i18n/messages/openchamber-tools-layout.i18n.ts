@@ -249,7 +249,7 @@ export const openchamberToolsLayoutI18n = {
     'settings.openchamber.tools.group.work': 'Текущая работа',
     'settings.openchamber.tools.group.chat': 'В чате',
     'settings.openchamber.tools.group.knowledge': 'Что знают агенты',
-    'settings.openchamber.tools.name.control': 'Сессии и рабочие деревья',
+    'settings.openchamber.tools.name.control': 'Сессии и worktree',
     'settings.openchamber.tools.name.workflow': 'Рабочие процессы',
     'settings.openchamber.tools.name.schedule': 'Расписания',
     'settings.openchamber.tools.name.web': 'Браузер',

@@ -5977,7 +5977,7 @@ export const isolatedSpacesI18n = {
     'settings.openchamber.spaces.places.dockerRunningColima': 'Docker {version} работает в Colima.',
     'settings.openchamber.spaces.places.dockerRunningDesktop': 'Docker {version} работает в Docker Desktop.',
     'settings.openchamber.spaces.places.spaceCount': 'Пространств здесь: работают {running}, остановлено {stopped}.',
-    'settings.openchamber.spaces.places.image.missing': 'Образ пространства ещё не скачан. Первое пространство скачает его, около 1,6 ГБ, или вы можете скачать его сейчас.',
+    'settings.openchamber.spaces.places.image.missing': 'Образ пространства ещё не скачан. Первое пространство скачает его, около 1,6 ГБ, или можно скачать его сейчас.',
     'settings.openchamber.spaces.places.image.downloadNow': 'Скачать сейчас',
     'settings.openchamber.spaces.places.image.downloadingNote': 'Скачиваем образ пространства, около 1,6 ГБ. Это займёт несколько минут.',
     'settings.openchamber.spaces.places.image.ready': 'Образ пространства скачан.',

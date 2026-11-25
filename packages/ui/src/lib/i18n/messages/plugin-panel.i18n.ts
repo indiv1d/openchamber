@@ -644,7 +644,7 @@ export const pluginPanelI18n = {
     'contextPanel.plugin.toast.copied': 'Скопировано',
     'contextPanel.plugin.toast.ok': 'ОК',
     'contextPanel.plugin.toast.copyFailed': 'Не удалось скопировать',
-    'contextPanel.plugin.attachDialog.description': 'Выберите элемент, чтобы прикрепить его к чату, или запустите сессию в рабочем дереве.',
+    'contextPanel.plugin.attachDialog.description': 'Выберите элемент, чтобы прикрепить его к чату, или запустите сессию в worktree.',
     'contextPanel.plugin.startSession.noProject': 'Сначала откройте проект.',
     'contextPanel.plugin.startSession.failed': 'Не удалось запустить эту сессию.',
     'contextPanel.plugin.startSession.created': 'Сессия запущена.',

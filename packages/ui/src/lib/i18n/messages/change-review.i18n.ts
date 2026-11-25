@@ -1730,7 +1730,7 @@ export const changeReviewI18n = {
     'session.newWorktree.change.fromItemUnavailable': 'Подключите аккаунт, чтобы начать с изменения или задачи.',
     'session.newWorktree.change.authorityMissing': 'Это изменение больше недоступно. Выберите его снова.',
     'chat.generatedResult.change.title': 'Созданное изменение',
-    'sessions.mergedCleanup.toast.change.archivedTitle': 'Рабочее дерево в архиве: изменение #{number} отправлено',
+    'sessions.mergedCleanup.toast.change.archivedTitle': 'Worktree в архиве: изменение #{number} отправлено',
     'sessions.mergedCleanup.toast.change.failedTitle': 'Не удалось очистить {name} после отправки изменения #{number}',
     'sessions.sidebar.group.change.status.open': 'Изменение открыто',
     'sessions.sidebar.group.change.status.draft': 'Изменение в работе',

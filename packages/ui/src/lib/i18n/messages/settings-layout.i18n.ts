@@ -422,7 +422,7 @@ export const settingsLayoutI18n = {
   },
 
   ru: {
-    'settings.layout.general.desktopApp.title': 'Приложение для компьютера',
+    'settings.layout.general.desktopApp.title': 'Десктоп',
     'settings.layout.general.quickAccess.title': 'Быстрый доступ',
     'settings.layout.general.quickAccess.info': 'Сочетания клавиш, которые вызывают OpenChamber из любого приложения, даже когда он работает в фоне.',
     'settings.layout.general.network.title': 'Пароль и доступ по сети',
@@ -441,7 +441,7 @@ export const settingsLayoutI18n = {
     'settings.layout.chat.section.sending': 'Отправка',
     'settings.layout.chat.section.draftsAndHistory': 'Черновики и история',
     'settings.layout.sessions.helperModels.title': 'Другие модели',
-    'settings.layout.sessions.sidebar.title': 'Боковая панель',
+    'settings.layout.sessions.sidebar.title': 'Сайдбар',
     'settings.layout.sessions.retention.target': 'Применяется к',
     'settings.layout.sessions.retention.target.unarchived': 'Сессии вне архива',
     'settings.layout.sessions.retention.target.archived': 'Сессии в архиве',

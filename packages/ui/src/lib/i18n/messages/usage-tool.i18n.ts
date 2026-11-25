@@ -77,8 +77,8 @@ export const usageToolI18n = {
   },
 
   ru: {
-    'settings.openchamber.tools.field.agentUsageTool': 'Инструмент использования агента',
-    'settings.openchamber.tools.field.agentUsageToolSummary': 'Позволяет агентам проверять лимиты провайдеров и время их сброса.',
+    'settings.openchamber.tools.field.agentUsageTool': 'Инструмент лимитов',
+    'settings.openchamber.tools.field.agentUsageToolSummary': 'Разрешить агентам проверять лимиты провайдеров и время их сброса.',
     'settings.openchamber.tools.field.agentUsageToolAria': 'Включить инструмент использования агента',
   },
 } as const;

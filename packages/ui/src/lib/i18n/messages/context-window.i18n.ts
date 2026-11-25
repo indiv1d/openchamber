@@ -189,7 +189,7 @@ export const contextWindowI18n = {
     'contextPanel.window.show': 'Показать окно панели',
     'contextPanel.window.returnHere': 'Вернуть панель в это окно',
     'contextPanel.window.title': 'Панель',
-    'contextPanel.window.empty': 'Откройте что-нибудь из боковой панели или перетащите сюда вкладку',
+    'contextPanel.window.empty': 'Откройте что-нибудь из сайдбара или перетащите сюда вкладку',
     'contextPanel.window.blocked': 'Браузер заблокировал новое окно. Разрешите всплывающие окна для этого сайта и попробуйте снова.',
     'contextPanel.window.failed': 'Не удалось открыть окно панели.',
   },

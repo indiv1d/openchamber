@@ -784,9 +784,9 @@ export const opencodeToolOutputI18n = {
   ru: {
     "chat.toolPart.opencode.action.sessionRename": "Переименована сессия",
     "chat.toolPart.opencode.action.sessionMove": "Перемещена сессия",
-    "chat.toolPart.opencode.action.worktreeCreate": "Создано рабочее дерево",
-    "chat.toolPart.opencode.action.worktreeList": "Показан список рабочих деревьев",
-    "chat.toolPart.opencode.action.worktreeRemove": "Удалено рабочее дерево",
+    "chat.toolPart.opencode.action.worktreeCreate": "Создан worktree",
+    "chat.toolPart.opencode.action.worktreeList": "Список worktree",
+    "chat.toolPart.opencode.action.worktreeRemove": "Удалён worktree",
     "chat.toolPart.opencode.action.models": "Выполнен поиск моделей",
     "chat.toolPart.opencode.action.listMcpResources": "Показан список ресурсов MCP",
     "chat.toolPart.opencode.action.readMcpResource": "Прочитан ресурс MCP",
