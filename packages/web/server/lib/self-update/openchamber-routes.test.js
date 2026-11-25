@@ -130,6 +130,17 @@ describe('OpenChamber desktop host update route', () => {
     expect(packageManager.checkForUpdates).not.toHaveBeenCalled();
   });
 
+  it('answers disabled when the build turns updates off', async () => {
+    const { app } = createApp({ environment: { OPENCHAMBER_UPDATES_DISABLED: '1' } });
+    await request(app).get('/api/openchamber/update-check?appType=web').expect(200, {
+      available: false, disabled: true,
+    });
+    await request(app).post('/api/openchamber/update-install').expect(409, {
+      code: 'UPDATES_DISABLED', error: 'Updates are disabled in this build.',
+    });
+    expect(packageManager.checkForUpdates).not.toHaveBeenCalled();
+  });
+
   it('rejects native checks without a bridge and preserves explicit non-web checks', async () => {
     const { app } = createApp({ environment: { OPENCHAMBER_RUNTIME: 'desktop' } });
     await request(app).get('/api/openchamber/update-check?appType=web').expect(503, {

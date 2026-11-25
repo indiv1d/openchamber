@@ -7,9 +7,15 @@ let desktopCheckResult: UpdateInfo | null = null
 let desktopCheckError: Error | null = null
 let downloadHandler: () => Promise<boolean> = async () => true
 let idleQueueResult: 'waiting' | 'unavailable' | 'failure' = 'waiting'
+type UpdateCheckBody = {
+  nextSuggestedCheckInSec?: number
+  available?: boolean
+  disabled?: boolean
+}
+let updateCheckResponse: UpdateCheckBody = { nextSuggestedCheckInSec: 3600 }
 
 mock.module('@/lib/runtime-fetch', () => ({
-  runtimeFetch: async () => new Response(JSON.stringify({ nextSuggestedCheckInSec: 3600 })),
+  runtimeFetch: async () => new Response(JSON.stringify(updateCheckResponse)),
 }))
 
 const desktop = await import('@/lib/desktop')
@@ -192,12 +198,18 @@ describe('parseUpdateCheckResponse', () => {
     expect(parseUpdateCheckResponse({ available: true, installBlocked: 'opencode-version', openCodeVersion: '2.2.6' }))
       .toMatchObject({ installBlocked: undefined, requiredOpenCodeVersion: undefined, openCodeVersion: undefined })
   })
+
+  test('keeps the disabled flag a fork build sends', () => {
+    expect(parseUpdateCheckResponse({ available: false, disabled: true }))
+      .toMatchObject({ available: false, disabled: true })
+  })
 })
 
 describe('useUpdateStore checkForUpdates', () => {
   const downloadedState = {
     checking: false,
     available: true,
+    updatesDisabled: false,
     downloading: false,
     downloaded: true,
     installing: false,
@@ -213,7 +225,16 @@ describe('useUpdateStore checkForUpdates', () => {
     desktopCheckError = null
     downloadHandler = async () => true
     desktopCheckResult = { available: true, currentVersion: '1.0.0', version: '2.0.0' }
+    updateCheckResponse = { nextSuggestedCheckInSec: 3600 }
     useUpdateStore.setState({ ...downloadedState })
+  })
+
+  test('a server that turns updates off hides the offer', async () => {
+    updateCheckResponse = { available: false, disabled: true }
+
+    await useUpdateStore.getState().checkForUpdates()
+
+    expect(useUpdateStore.getState()).toMatchObject({ available: false, updatesDisabled: true })
   })
 
   test('a different offered version drops the downloaded payload', async () => {

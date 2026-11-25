@@ -31,4 +31,4 @@ This repo owns docs content.
 
 Website rendering/deployment happens in `openchamber-website` (`apps/docs`).
 
-Use `.github/workflows/docs-source.yml` to package docs source on release or manual trigger.
+Use `packages/docs/DEPLOYMENT.md` to package docs source by hand. This fork does not use GitHub Actions.

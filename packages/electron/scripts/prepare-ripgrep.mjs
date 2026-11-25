@@ -24,7 +24,7 @@ const artifactUrl = (packageName, version) => (
   `https://registry.npmjs.org/@vscode/${packageName}/-/${packageName}-${version}.tgz`
 );
 
-const binaryName = process.platform === 'win32' ? 'rg.exe' : 'rg';
+const binaryName = (process.env.OPENCHAMBER_TARGET_PLATFORM || process.platform) === 'win32' ? 'rg.exe' : 'rg';
 
 const readLockedIntegrity = (packageName, version) => {
   const spec = `"@vscode/${packageName}@${version}"`;
@@ -77,11 +77,12 @@ const readRipgrepVersion = (binaryPath) => {
 };
 
 const main = async () => {
+  const targetPlatform = process.env.OPENCHAMBER_TARGET_PLATFORM || process.platform;
   const version = readPackagedVersion();
   const targetArchitecture = resolveTargetArchitecture();
-  const packageName = `ripgrep-${process.platform}-${targetArchitecture.node}`;
+  const packageName = `ripgrep-${targetPlatform}-${targetArchitecture.node}`;
 
-  const cacheDir = path.join(cacheRoot, version, `${process.platform}-${targetArchitecture.node}`);
+  const cacheDir = path.join(cacheRoot, version, `${targetPlatform}-${targetArchitecture.node}`);
   const archivePath = path.join(cacheDir, `${packageName}-${version}.tgz`);
   const integrity = readLockedIntegrity(packageName, version);
   if (fs.existsSync(archivePath) && archiveMatchesLock(archivePath, integrity)) {
@@ -109,12 +110,12 @@ const main = async () => {
   }
   const outputBinary = path.join(outputDir, binaryName);
   fs.copyFileSync(extractedBinary, outputBinary);
-  if (process.platform !== 'win32') {
+  if (targetPlatform !== 'win32') {
     fs.chmodSync(outputBinary, 0o755);
   }
 
-  if (process.platform === 'win32' && targetArchitecture.node !== process.arch) {
-    console.log(`[electron] prepared ripgrep (@vscode/${packageName}@${version}, not run on this ${process.arch} host): ${outputBinary}`);
+  if (targetPlatform !== process.platform) {
+    console.log(`[electron] prepared ripgrep for ${targetPlatform}-${targetArchitecture.node} (not run on this ${process.platform} host): ${outputBinary}`);
     return;
   }
   const ripgrepVersion = readRipgrepVersion(outputBinary);

@@ -1,6 +1,8 @@
 import * as nodeModule from 'node:module';
 import { existsSync } from 'node:fs';
 
+process.env.OPENCHAMBER_UPDATES_DISABLED ??= '1';
+
 nodeModule.setSourceMapsSupport?.(true, { nodeModules: true });
 
 const sourceLoader = new URL('../scripts/register-server-sources.mjs', import.meta.url);

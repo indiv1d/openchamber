@@ -165,6 +165,7 @@ const execFileAsync = promisify(execFile);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+process.env.OPENCHAMBER_UPDATES_DISABLED = '1';
 // external: #3399 Increase Node auto-family connection timeout because 250 ms aborts handshakes to distant providers.
 applyConnectAttemptTimeout();
 
@@ -2330,7 +2331,7 @@ const applyDesktopQuakeModeShortcut = () => {
 };
 
 const dispatchCheckForUpdates = () => {
-  emitToAllWindows('openchamber:check-for-updates');
+  if (process.env.OPENCHAMBER_UPDATES_DISABLED !== '1') emitToAllWindows('openchamber:check-for-updates');
 };
 
 const reloadMenuTargetWindow = () => {
@@ -3241,7 +3242,7 @@ const applyUpdaterChannel = (channel, source = pickUpdaterSource({ mirrorFailedA
 };
 
 const setupAutoUpdater = () => {
-  if (!app.isPackaged) return;
+  if (!app.isPackaged || process.env.OPENCHAMBER_UPDATES_DISABLED === '1') return;
   enableMacosDirectContentsUpdates({ app, systemPreferences });
   autoUpdater.autoDownload = false;
   autoUpdater.autoInstallOnAppQuit = false;
@@ -4503,6 +4504,7 @@ const handleInvoke = async (browserWindow, command, args = {}) => {
       });
 
     case 'desktop_check_for_updates': {
+      if (process.env.OPENCHAMBER_UPDATES_DISABLED === '1') return { available: false, disabled: true, downloaded: false, currentVersion: APP_VERSION, version: null, body: null, date: null };
       assertUpdaterCapability({ packaged: app.isPackaged });
       if (state.updateCheck && readUpdateChannel() !== state.updaterChannel) {
         await state.updateCheck.catch(() => null);
@@ -4558,6 +4560,7 @@ const handleInvoke = async (browserWindow, command, args = {}) => {
     }
 
     case 'desktop_download_and_install_update':
+      if (process.env.OPENCHAMBER_UPDATES_DISABLED === '1') throw new Error('Updates are disabled in this build');
       return downloadDesktopUpdateWithProgress({
         app, autoUpdater, state, assertUpdaterCapability, setTaskbarProgress, emitToAllWindows, mapUpdaterProgressEvent,
       });
@@ -4832,10 +4835,7 @@ const buildMacMenu = (locale = 'en') => {
       label: t('app.name'),
       submenu: [
         { label: t('about'), click: () => dispatchAction('about') },
-        {
-          label: t('checkForUpdates'),
-          click: () => dispatchCheckForUpdates(),
-        },
+        ...(process.env.OPENCHAMBER_UPDATES_DISABLED === '1' ? [] : [{ label: t('checkForUpdates'), click: () => dispatchCheckForUpdates() }]),
         { type: 'separator' },
         { label: t('settings'), accelerator: 'Cmd+,', click: () => dispatchAction('settings') },
         { label: t('reloadWebview'), click: () => reloadMenuTargetWindow() },
@@ -4938,10 +4938,7 @@ const buildAutoHiddenMenu = (locale = 'en') => {
       label: t('app.name'),
       submenu: [
         { label: t('about'), click: () => dispatchAction('about') },
-        {
-          label: t('checkForUpdates'),
-          click: () => dispatchCheckForUpdates(),
-        },
+        ...(process.env.OPENCHAMBER_UPDATES_DISABLED === '1' ? [] : [{ label: t('checkForUpdates'), click: () => dispatchCheckForUpdates() }]),
         { type: 'separator' },
         { label: t('settings'), accelerator: 'Ctrl+,', click: () => dispatchAction('settings') },
         { label: t('reloadWebview'), click: () => reloadMenuTargetWindow() },

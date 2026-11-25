@@ -25,6 +25,7 @@ declare const __APP_VERSION__: string | undefined;
 type UpdateState = {
   checking: boolean;
   available: boolean;
+  updatesDisabled: boolean;
   downloading: boolean;
   downloaded: boolean;
   installing: boolean;
@@ -151,6 +152,7 @@ function mapRuntimeParams(runtime: ClientRuntime): URLSearchParams {
 
 export function parseUpdateCheckResponse(data: {
   available?: boolean;
+  disabled?: boolean;
   version?: string;
   currentVersion?: string;
   body?: string;
@@ -162,11 +164,12 @@ export function parseUpdateCheckResponse(data: {
   installBlocked?: string;
   requiredOpenCodeVersion?: string;
   openCodeVersion?: string;
-}): UpdateInfo {
+}): UpdateInfo & { disabled?: boolean } {
   const openCodeTooOld = data.installBlocked === 'opencode-version'
     && Boolean(data.requiredOpenCodeVersion && data.openCodeVersion);
   return {
     available: data.available ?? false,
+    disabled: data.disabled === true,
     version: data.version,
     currentVersion: data.currentVersion ?? 'unknown',
     body: data.body,
@@ -188,7 +191,7 @@ export function parseUpdateCheckResponse(data: {
   };
 }
 
-async function checkForWebUpdates(runtime: ClientRuntime, currentVersion?: string): Promise<UpdateInfo | null> {
+async function checkForWebUpdates(runtime: ClientRuntime, currentVersion?: string): Promise<(UpdateInfo & { disabled?: boolean }) | null> {
   try {
     const params = mapRuntimeParams(runtime);
     const vscodeVersion = typeof window !== 'undefined'
@@ -247,6 +250,7 @@ let lastDownloadedDesktopVersion: string | null = null;
 const initialState: UpdateState = {
   checking: false,
   available: false,
+  updatesDisabled: false,
   downloading: false,
   downloaded: false,
   installing: false,
@@ -267,11 +271,12 @@ export const useUpdateStore = create<UpdateStore>()((set, get) => ({
   checkForUpdates: async () => {
     const runtime = detectRuntimeType();
     if (!runtime) return null;
+    if (get().updatesDisabled) return null;
 
     set({ checking: true, error: null, runtimeType: runtime });
 
     try {
-      let info: UpdateInfo | null = null;
+      let info: (UpdateInfo & { disabled?: boolean }) | null = null;
       let suggestedSec: number | null = null;
 
       if (runtime === 'desktop') {
@@ -302,9 +307,12 @@ export const useUpdateStore = create<UpdateStore>()((set, get) => ({
           || (offeredVersion !== null && lastDownloadedDesktopVersion === offeredVersion)
           || (!versionChanged && get().downloaded)
         );
+        const desktopDisabled = 'disabled' in desktopInfo && desktopInfo.disabled === true;
+        const updatesDisabled = desktopDisabled || (apiResult.status === 'fulfilled' && apiResult.value?.disabled === true);
         set({
           checking: false,
-          available: desktopInfo.available,
+          available: desktopInfo.available && !updatesDisabled,
+          updatesDisabled,
           info: desktopInfo,
           lastChecked: Date.now(),
           nextCheckInSec: suggestedSec,
@@ -329,7 +337,8 @@ export const useUpdateStore = create<UpdateStore>()((set, get) => ({
 
       set({
         checking: false,
-        available: runtime === 'vscode' ? false : (info?.available ?? false),
+        available: runtime === 'vscode' ? false : ((info?.available ?? false) && info?.disabled !== true),
+        updatesDisabled: info?.disabled === true,
         info: runtime === 'vscode' ? null : info,
         lastChecked: Date.now(),
         nextCheckInSec: suggestedSec,

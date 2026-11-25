@@ -157,7 +157,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
   const updateStore = useUpdateStore(useShallow((s) => ({
     info: s.info,
     checking: s.checking,
-    available: s.available,
+    available: s.available, updatesDisabled: s.updatesDisabled,
     error: s.error,
     downloading: s.downloading,
     downloaded: s.downloaded,
@@ -316,7 +316,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
     }
     void update.checkForUpdates();
   };
-  const updateChannelControl = updateChannel && (
+  const updateChannelControl = !updateStore.updatesDisabled && updateChannel && (
     <SettingsChipGroup
       value={updateChannel}
       onChange={(channel) => void chooseUpdateChannel(channel)}
@@ -578,7 +578,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
         {updateChannelControl && <div className="flex justify-center">{updateChannelControl}</div>}
 
         <div className="flex justify-center">
-          {!update.available && !update.error && (
+          {!updateStore.updatesDisabled && !update.available && !update.error && (
             <Button
               type="button"
               variant="outline"
@@ -596,7 +596,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
             </Button>
           )}
 
-          {!isChecking && update.available && !installBlocked && (
+          {!updateStore.updatesDisabled && !isChecking && update.available && !installBlocked && (
             <Button
               type="button"
               variant="default"
@@ -699,7 +699,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
         {t('settings.openchamber.about.state.checking')}
       </span>
     </>
-  ) : !update.available && !update.error ? (
+  ) : !updateStore.updatesDisabled && !update.available && !update.error ? (
     <>
       {statusSeparator}
       <span className="typography-meta text-muted-foreground">{t('settings.openchamber.about.state.upToDate')}</span>
@@ -751,7 +751,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
 
       <SettingsSection contentClassName="space-y-4">
         <AboutUpdateBanners describeVersion={describeVersion}
-          main={!isChecking && update.available && !installBlocked ? { info: update.info, owner: isDesktopRemote ? 'app' : isNativeApp ? 'server' : 'openchamber', onUpdate: () => setUpdateDialogOpen(true) } : null}
+          main={!updateStore.updatesDisabled && !isChecking && update.available && !installBlocked ? { info: update.info, owner: isDesktopRemote ? 'app' : isNativeApp ? 'server' : 'openchamber', onUpdate: () => setUpdateDialogOpen(true) } : null}
           remoteHost={remoteHostUpdateButton ? { info: remoteHostUpdate?.info ?? null, onUpdate: () => setServerUpdateDialogOpen(true) } : null}
           appDownload={appDownloadUrl ? { version: describeVersion(updateStore.info?.version || '', nativeAppVersion), url: appDownloadUrl } : null}
         />
@@ -784,7 +784,7 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
               {openChamberStatus}
             </SettingsFieldRow>
           )}
-          <SettingsFieldRow
+          {!updateStore.updatesDisabled && (<SettingsFieldRow
             label={t('settings.openchamber.about.field.updateChannel')}
             info={updateChannelControl ? t('settings.openchamber.about.field.updateChannelHint') : undefined}
             {...valueRow}
@@ -794,8 +794,8 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
               <Icon name="refresh" className="size-4" />
               {t('settings.openchamber.about.actions.checkForUpdates')}
             </Button>
-          </SettingsFieldRow>
-          <DesktopAutoUpdateRow enabled={isDesktopApp} onEnabled={() => void update.checkForUpdates()} />
+          </SettingsFieldRow>)}
+          {!updateStore.updatesDisabled && <DesktopAutoUpdateRow enabled={isDesktopApp} onEnabled={() => void update.checkForUpdates()} />}
           <SettingsFieldRow label={t('settings.openchamber.about.field.openCodeVersion')} {...valueRow}>
             {versionValue(openCodeVersion || t('settings.openchamber.about.state.unknown'))}
             {openCodeUpdate?.action}

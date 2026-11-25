@@ -109,6 +109,8 @@ export const registerOpenChamberRoutes = (app: Application, dependencies: OpenCh
     getOpenCodeCompatibility,
   } = dependencies;
 
+  const updatesDisabled = process.env.OPENCHAMBER_UPDATES_DISABLED === '1';
+
   let desktopRestartError: string | null = null;
 
   const readOpenCodeShortfall = async (version: UpdateCheckResult['version']) => {
@@ -155,6 +157,7 @@ export const registerOpenChamberRoutes = (app: Application, dependencies: OpenCh
 
   app.get('/api/openchamber/update-check', async (req, res) => {
     try {
+      if (updatesDisabled) return res.json({ available: false, disabled: true });
       const parseString = (value: QueryValue | undefined) => (isString(value) && value.trim().length > 0 ? value.trim() : undefined);
       const parseReportUsage = (value: string | undefined) => {
         if (value === undefined) return true;
@@ -245,6 +248,7 @@ export const registerOpenChamberRoutes = (app: Application, dependencies: OpenCh
 
   app.post('/api/openchamber/update-install', async (_req, res) => {
     try {
+      if (updatesDisabled) return res.status(409).json({ code: 'UPDATES_DISABLED', error: 'Updates are disabled in this build.' });
       if (process.env.OPENCHAMBER_RUNTIME === 'desktop') {
         if (!desktopUpdater) {
           return res.status(503).json({

@@ -116,6 +116,10 @@ bun run lint:ui
 
 ## Platform Build Notes
 
+This fork builds without GitHub Actions. Use `deploy/docker.sh`, `deploy/linux.sh`, `deploy/windows.sh` and `deploy/macos.sh`; `deploy/README.md` covers requirements, artifacts and the unsigned installers. Shipped builds have updates disabled.
+
+The commands below build the individual workspaces and remain useful while developing.
+
 You usually build desktop installers on the target platform.
 
 macOS:

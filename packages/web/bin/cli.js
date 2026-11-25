@@ -2,6 +2,8 @@
 
 import { existsSync } from 'node:fs';
 
+process.env.OPENCHAMBER_UPDATES_DISABLED ??= '1';
+
 const sourceLoader = new URL('../scripts/register-server-sources.mjs', import.meta.url);
 if (!process.versions.bun && existsSync(sourceLoader)) await import(sourceLoader.href);
 
