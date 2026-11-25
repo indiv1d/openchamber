@@ -120,4 +120,13 @@ export const mobileAppSettingsI18n = {
     'settings.mobileApp.keepScreenAwake.option.working': 'בזמן עבודה',
     'settings.mobileApp.keepScreenAwake.option.always': 'תמיד',
   },
+
+  ru: {
+    'settings.layout.general.mobileApp.title': 'Мобильное приложение',
+    'settings.mobileApp.keepScreenAwake.label': 'Не выключать экран',
+    'settings.mobileApp.keepScreenAwake.info': '«Пока идёт работа» не даёт экрану выключаться, пока выполняется открытая сессия или один из её субагентов. Действует только на этом устройстве.',
+    'settings.mobileApp.keepScreenAwake.option.off': 'Выключено',
+    'settings.mobileApp.keepScreenAwake.option.working': 'Пока идёт работа',
+    'settings.mobileApp.keepScreenAwake.option.always': 'Всегда',
+  },
 } as const;

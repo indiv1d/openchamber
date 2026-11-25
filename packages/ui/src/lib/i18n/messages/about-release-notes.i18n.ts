@@ -225,4 +225,20 @@ export const aboutReleaseNotesI18n = {
     'releaseNotes.group.sdk': 'SDK',
     'releaseNotes.group.misc': 'שונות',
   },
+
+  ru: {
+    "settings.openchamber.about.releaseNotes.current": "Что нового в {version}",
+    "settings.openchamber.about.releaseNotes.since": "Что нового с {version}",
+    "settings.openchamber.about.releaseNotes.app.current": "Это приложение: что нового в {version}",
+    "settings.openchamber.about.releaseNotes.app.since": "Это приложение: что нового с {version}",
+    "settings.openchamber.about.releaseNotes.server.current": "Сервер: что нового в {version}",
+    "settings.openchamber.about.releaseNotes.server.since": "Сервер: что нового с {version}",
+    "settings.openchamber.about.releaseNotes.allReleases": "Все выпуски",
+    "releaseNotes.showAll": "Показать все",
+    "releaseNotes.group.new": "Новое",
+    "releaseNotes.group.improvements": "Улучшения",
+    "releaseNotes.group.fixes": "Исправления",
+    "releaseNotes.group.sdk": "SDK",
+    "releaseNotes.group.misc": "Прочее",
+  },
 } as const;

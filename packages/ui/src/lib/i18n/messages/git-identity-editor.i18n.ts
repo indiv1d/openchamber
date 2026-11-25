@@ -225,4 +225,20 @@ export const gitIdentityEditorI18n = {
     'settings.gitIdentities.editor.auth.sshHint': 'דוחף ומושך דרך SSH עם מפתח ש-OpenChamber שומר עבור הזהות הזו.',
     'settings.gitIdentities.editor.field.sshKey': 'מפתח SSH',
   },
+
+  ru: {
+    'settings.gitIdentities.editor.appearance.aria': 'Значок и цвет',
+    'settings.gitIdentities.editor.color.green': 'Зелёный',
+    'settings.gitIdentities.editor.color.red': 'Красный',
+    'settings.gitIdentities.editor.color.cyan': 'Голубой',
+    'settings.gitIdentities.editor.color.orange': 'Оранжевый',
+    'settings.gitIdentities.editor.color.yellow': 'Жёлтый',
+    'settings.gitIdentities.editor.icon.branch': 'Ветка',
+    'settings.gitIdentities.editor.icon.work': 'Работа',
+    'settings.gitIdentities.editor.icon.personal': 'Личное',
+    'settings.gitIdentities.editor.icon.school': 'Учёба',
+    'settings.gitIdentities.editor.icon.code': 'Код',
+    'settings.gitIdentities.editor.auth.sshHint': 'Отправка и получение изменений по SSH с ключом, который OpenChamber хранит для этой идентичности.',
+    'settings.gitIdentities.editor.field.sshKey': 'SSH-ключ',
+  },
 } as const;

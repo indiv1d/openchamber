@@ -57,7 +57,9 @@ async function importDictionary(locale: Locale): Promise<I18nDictionary> {
           ? await import('./messages/pt-BR') as { dict: I18nDictionary }
           : locale === 'uk'
             ? await import('./messages/uk') as { dict: I18nDictionary }
-            : locale === 'ko'
+            : locale === 'ru'
+              ? await import('./messages/ru')
+              : locale === 'ko'
               ? await import('./messages/ko') as { dict: I18nDictionary }
               : locale === 'pl'
                 ? await import('./messages/pl') as { dict: I18nDictionary }

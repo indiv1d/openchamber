@@ -225,4 +225,20 @@ export const compactionSettingsI18n = {
     'settings.openchamber.defaults.compaction.background': 'דחיסה ברקע',
     'settings.openchamber.defaults.compaction.backgroundInfo': 'כשהפעלה מתקרבת לדחיסה, OpenCode כותב את הסיכום מראש ומחליף אליו כשמגיע הזמן, כך שההפעלה לא נעצרת לחכות לו. סיכום שלא נוצל עדיין עולה טוקנים.',
   },
+
+  ru: {
+    'settings.openchamber.defaults.compaction.title': 'Сжатие',
+    'settings.openchamber.defaults.compaction.auto': 'Сжимать автоматически',
+    'settings.openchamber.defaults.compaction.autoInfo': 'OpenCode сам создаёт сводку сессии, когда она приближается к лимиту контекста модели, и ещё раз, когда провайдер отклоняет запрос как слишком длинный. Если выключено, сжимает только /compact, а сессия, достигшая лимита, останавливается с ошибкой.',
+    'settings.openchamber.defaults.compaction.projectNote': 'Действует для всех проектов. Проект, в конфиге OpenCode которого заданы эти параметры, сохраняет свои значения.',
+    'settings.openchamber.defaults.compaction.buffer': 'Запас до лимита',
+    'settings.openchamber.defaults.compaction.bufferInfo': 'Доля контекстного окна модели, которая остаётся свободной. Сжатие начинается, когда остальное заполнится, так что при 20% оно запускается при заполнении на 80%. По умолчанию OpenCode оставляет свободными 15%, но не менее 16K.',
+    'settings.openchamber.defaults.compaction.bufferDefault': 'По умолчанию (15%)',
+    'settings.openchamber.defaults.compaction.keep': 'Сохранённый недавний контекст',
+    'settings.openchamber.defaults.compaction.keepInfo': 'Сколько последних сообщений остаётся дословно рядом со сводкой после сжатия. Больше значит точные недавние детали, но меньше места для новой работы.',
+    'settings.openchamber.defaults.compaction.keepDefault': 'По умолчанию ({count})',
+    'settings.openchamber.defaults.compaction.tokens': 'Токенов: {count}',
+    'settings.openchamber.defaults.compaction.background': 'Сжимать в фоне',
+    'settings.openchamber.defaults.compaction.backgroundInfo': 'Когда сессия приближается к сжатию, OpenCode заранее пишет сводку и подставляет её, когда сжатие потребуется, так что сессия не останавливается. Сводка, которая осталась неиспользованной, всё равно тратит токены.',
+  },
 } as const;

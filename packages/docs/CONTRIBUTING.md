@@ -194,7 +194,7 @@ Notes:
 
 ## Localization
 
-The docs are translated into the same languages the OpenChamber app ships in.
+The docs are translated into a subset of the languages the OpenChamber app ships in.
 English is the source of truth and lives at the root of `content/docs/`. Every
 other language mirrors the English files under a locale folder.
 

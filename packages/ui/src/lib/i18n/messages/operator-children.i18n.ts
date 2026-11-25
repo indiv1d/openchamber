@@ -270,4 +270,23 @@ export const operatorChildrenI18n = {
     "sessions.operatorChildren.done.stopOne": "לעצור",
     "sessions.operatorChildren.done.stopMany": "לעצור את כולן",
   },
+
+  ru: {
+    "chat.workflow.proposedBy": "Предложено в {title}",
+    "sessions.sidebar.session.menu.takeOver": "Перехватить",
+    "chat.container.readOnlyOperatorChildPromptBanner": "Этой сессией управляет другой агент. Чтобы писать здесь, выберите «Перехватить» в её меню на боковой панели.",
+    "chat.container.readOnlyFolderMissingBanner": "Папка этой сессии {name} больше не существует, поэтому сессия открыта только для чтения.",
+    "chat.container.readOnlyFolderOutsideBanner": "Папка этой сессии {name} находится вне ваших проектов, поэтому сессия открыта только для чтения.",
+    "sessions.sidebar.session.menuHint.takeOver": "Сделайте её своей сессией: она отделится от агента, который ею управляет, получит отдельную строку и сможет задавать вам вопросы.",
+    "sessions.sidebar.session.takeOver.failed": "Не удалось перехватить сессию",
+    "sessions.sidebar.work.menu.takeOverOne": "Перехватить сессию агента",
+    "sessions.sidebar.work.menu.takeOverMany": "Перехватить сессии агента ({count})",
+    "sessions.operatorChildren.done.title": "Её сессии всё ещё работают",
+    "sessions.operatorChildren.done.descriptionOne": "Сессия, которую эта запустила для своей работы, всё ещё выполняется.",
+    "sessions.operatorChildren.done.descriptionMany": "Сессии, которые эта запустила для своей работы и которые всё ещё выполняются: {count}.",
+    "sessions.operatorChildren.done.finishOne": "Дать ей закончить",
+    "sessions.operatorChildren.done.finishMany": "Дать им закончить",
+    "sessions.operatorChildren.done.stopOne": "Остановить её",
+    "sessions.operatorChildren.done.stopMany": "Остановить их",
+  },
 } as const;

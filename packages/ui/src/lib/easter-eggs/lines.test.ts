@@ -14,6 +14,7 @@ import { copy as ko } from './copy/ko';
 import { copy as nl } from './copy/nl';
 import { copy as pl } from './copy/pl';
 import { copy as ptBR } from './copy/pt-BR';
+import { copy as ru } from './copy/ru';
 import { copy as tr } from './copy/tr';
 import type { EasterEggCopy } from './copy/types';
 import { copy as uk } from './copy/uk';
@@ -22,7 +23,7 @@ import { copy as zhTW } from './copy/zh-TW';
 import { draftMomentAt, draftTitleLine, gitCleanLine, netDeletionLine, NET_DELETION_THRESHOLD, pushLine, thinkingLine, THINKING_LINE_ODDS } from './lines';
 
 const COPIES = {
-  en, de, fr, nl, 'zh-CN': zhCN, 'zh-TW': zhTW, uk, es, 'pt-BR': ptBR, ko, pl, ja, tr, ar, he,
+  en, de, fr, nl, 'zh-CN': zhCN, 'zh-TW': zhTW, uk, ru, es, 'pt-BR': ptBR, ko, pl, ja, tr, ar, he,
 } satisfies Record<Locale, EasterEggCopy>;
 
 // Local time, the way the app reads the clock. 2026-10-30 is a Friday.

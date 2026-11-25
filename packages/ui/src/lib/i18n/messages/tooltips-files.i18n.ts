@@ -255,4 +255,22 @@ export const tooltipsFilesI18n = {
     'contextTooltips.files.chooseTable': '選擇資料表',
     'contextTooltips.files.searchPlainText': '以純文字搜尋',
   },
+
+  ru: {
+    'contextTooltips.files.retryFolder': 'Загрузить эту папку снова',
+    'contextTooltips.files.retryFileList': 'Загрузить список файлов снова',
+    'contextTooltips.files.retryFile': 'Загрузить этот файл снова',
+    'contextTooltips.files.retryImage': 'Загрузить это изображение снова',
+    'contextTooltips.files.downloadCopy': 'Скачать копию этого файла',
+    'contextTooltips.files.openOutside': 'Открыть вне OpenChamber',
+    'contextTooltips.files.excalidrawSettings': 'Открыть расширение в настройках',
+    'contextTooltips.files.showCodeForFile': 'Переключить этот файл в режим кода',
+    'contextTooltips.files.chooseSheet': 'Выберите лист',
+    'contextTooltips.files.retrySave': 'Попробуйте сохранить ещё раз',
+    'contextTooltips.files.writeQuery': 'Напишите свой SQL-запрос',
+    'contextTooltips.files.runQuery': 'Выполните его на копии: файл останется без изменений',
+    'contextTooltips.files.closeQuery': 'Закрыть поле запроса, текст в нём сохранится',
+    'contextTooltips.files.chooseTable': 'Выберите таблицу',
+    'contextTooltips.files.searchPlainText': 'Искать как обычный текст',
+  },
 };

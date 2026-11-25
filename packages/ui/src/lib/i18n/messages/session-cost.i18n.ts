@@ -180,4 +180,17 @@ export const sessionCostI18n = {
     'chat.toast.sessionCost.title': 'עלות ההפעלה עברה את {threshold}',
     'chat.toast.sessionCost.openSession': 'פתיחת ההפעלה',
   },
+
+  ru: {
+    'settings.openchamber.sessionCost.title': 'Стоимость сессии',
+    'settings.openchamber.sessionCost.field.enabled': 'Предупреждать, когда сессия становится дорогой',
+    'settings.openchamber.sessionCost.field.enabledInfo': 'Стоимость в статусе работы становится жёлтой, а затем красной, когда сессия и её субагенты превышают эти суммы. Пока сессия выполняется, уведомление появляется в момент превышения. Суммы берутся из данных OpenCode, а подписка может их не оплачивать.',
+    'settings.openchamber.sessionCost.field.warnAt': 'Жёлтый при',
+    'settings.openchamber.sessionCost.field.warnAtAria': 'Стоимость сессии в долларах США, при которой цвет становится жёлтым',
+    'settings.openchamber.sessionCost.field.criticalAt': 'Красный при',
+    'settings.openchamber.sessionCost.field.criticalAtAria': 'Стоимость сессии в долларах США, при которой цвет становится красным',
+    'settings.openchamber.sessionCost.field.orderError': 'Жёлтый порог должен быть ниже красного. Пока это не так, сохраняются последние подходящие суммы.',
+    'chat.toast.sessionCost.title': 'Стоимость сессии превысила {threshold}',
+    'chat.toast.sessionCost.openSession': 'Открыть сессию',
+  },
 };

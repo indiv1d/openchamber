@@ -101,19 +101,23 @@ date
 
 ## Desktop Native Menus
 
-The Electron app menu and the right-click context menu are native, outside `@/lib/i18n`. Their labels live in `packages/electron/menu-locales.mjs` (`MENU_LOCALE_DICTIONARIES`, `CONTEXT_MENU_LABEL_DICTIONARIES`), keyed by the same locale codes as the UI. A new menu item gets its label in every locale there, and a new UI language gets its own entry there in the same change; `menu-locales.test.mjs` checks key parity. The tray menu and tooltip labels live in `packages/electron/tray-locales.mjs` (`TRAY_LOCALE_DICTIONARIES`) under the same rule; `tray-menu.test.mjs` checks their parity.
+The Electron app menu and the right-click context menu are native, outside `@/lib/i18n`. Their labels live in `packages/electron/menu-locales.mjs` (`MENU_LOCALE_DICTIONARIES`, `CONTEXT_MENU_LABEL_DICTIONARIES`), keyed by the same locale codes as the UI; the menu locale data itself sits in `menu-locale-dictionaries-a.mjs` and `menu-locale-dictionaries-b.mjs`, split only to keep each module under the source size limit. A new menu item gets its label in every locale there, and a new UI language gets its own entry in the same change; `menu-locales.test.mjs` checks key parity. The tray menu and tooltip labels live in `packages/electron/tray-locales.mjs` (`TRAY_LOCALE_DICTIONARIES`) under the same rule; `tray-menu.test.mjs` checks their parity.
 
 ## Adding a UI Language
 
-Russian is not added: a standing maintainer decision (`triage-prs`, template *russian-locale*).
+Russian is supported since 2026-11-25 and carries the `ru` code everywhere.
 
 A new locale code lands in all of these in one change:
 
 - `packages/ui/src/lib/i18n/runtime.ts`: the `Locale` union, `LOCALES`, `LOCALE_LABEL_KEYS`, and `normalizeLocale` (include legacy tags the platforms still send, such as `iw` for Hebrew). A right-to-left language also joins `RTL_LOCALES`; the layout side is owned by `rtl-layout`.
 - `store.ts` (lazy import), `intl.ts` (Intl tag), `bootstrap.ts` (startup strings), `messages.test.ts`.
 - `messages/<locale>.ts` and `messages/<locale>.settings.ts`, a `<locale>` block in every `messages/*.i18n.ts`, and a `common.language.<name>` label in every existing dictionary.
-- `packages/electron/menu-locales.mjs` and `packages/electron/tray-locales.mjs` (see above).
-- `packages/web/server/lib/settings/settings-helpers.js` `UI_LOCALE_VALUES`: without it the server drops the saved choice. `packages/web/server/lib/walkthrough/languages.js` names the language for walkthrough prompts.
+- `packages/electron/menu-locales.mjs` and `packages/electron/tray-locales.mjs` (see above), `packages/electron/idle-update-locales.mjs` (the update window title), and `packages/ui/src/lib/i18n/messages/update-idle.i18n.ts`.
+- `packages/web/server/lib/settings/settings-helpers.ts` `UI_LOCALE_VALUES`: without it the server drops the saved choice. `packages/web/server/lib/walkthrough/languages.ts` names the language for walkthrough prompts.
+- `packages/web/server/lib/notifications/template-locales.ts` and `pull-request-locales.ts`.
+- `packages/ui/src/lib/easter-eggs/easterEggCopy.ts` and a `copy/<locale>.ts` with its plural forms.
+- `packages/vscode/package.nls.<locale>.json` for the extension's command and setting labels.
+- Regenerate the share documents with `bun run --cwd packages/ui share-document:generate`.
 
 ## Translation Boundary
 

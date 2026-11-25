@@ -46,7 +46,7 @@ Fetch all open issues with `gh issue list --limit` above the real count. Bucket 
 | Stale-fixed | references code/behavior changed by merged PRs; CHANGELOG `[Unreleased]`/recent releases mention the symptom | CLOSE-FIXED (verify per *Silently-fixed detection*) |
 | Dead needs-info | `needs-info` with no reporter reply > 14 days | close as stale |
 | Not ours | intake verdict or thread places the mechanism upstream, in provider data, or in user configuration | CLOSE-NOT-OURS |
-| Decided | matches a recorded maintainer decision (close comment, declined PR; a request for Russian localization closes with `triage-prs`' *russian-locale* text) | CLOSE-DECLINE by pointer |
+| Decided | matches a recorded maintainer decision (close comment, declined PR, a line in `triage-issues/references/product-stances.md`) | CLOSE-DECLINE by pointer |
 | Duplicate clusters | title/error-string similarity across open issues | CLOSE-DUPLICATE |
 | Feature wishes | `enhancement` | FEATURE-DECISION or CLOSE-DECLINE |
 | Traced bugs | `root-cause:found` | *wanted?* candidate: verify the trace still applies and no PR is open for it |

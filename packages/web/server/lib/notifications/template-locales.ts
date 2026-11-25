@@ -329,6 +329,28 @@ const he = {
   shareAnswersTitle: '{count} תשובות לדפים ששותפו',
 };
 
+const ru = {
+  readyTitle: '{agent_name} готов',
+  readyMessage: '{model_name} выполнил задачу',
+  errorTitle: 'Ошибка инструмента',
+  errorBody: 'Произошла ошибка',
+  questionTitle: 'Требуется ввод',
+  questionBody: 'Агент ждёт вашего ответа',
+  permissionTitle: 'Нужно разрешение',
+  permissionBody: 'Агент ждёт вашего подтверждения',
+  planModeTitle: 'Переключиться в режим планирования',
+  buildModeTitle: 'Переключиться в режим сборки',
+  reviewCleanTitle: 'Проверка завершена',
+  reviewCleanBody: 'Замечаний не осталось',
+  reviewDisputedTitle: 'Проверка требует вашего решения',
+  reviewDisputedBody: 'Часть замечаний всё ещё оспаривается',
+  reviewLimitTitle: 'Проверка остановлена после пяти раундов',
+  reviewLimitBody: 'Замечания всё ещё открыты',
+  reviewFailedTitle: 'Проверка не удалась',
+  shareAnswerTitle: '{label}: ответ на «{title}»',
+  shareAnswersTitle: '{count} ответов на общие страницы',
+};
+
 export const NOTIFICATION_TEXT_BY_LOCALE = {
   en,
   de,
@@ -337,6 +359,7 @@ export const NOTIFICATION_TEXT_BY_LOCALE = {
   'zh-CN': zhCN,
   'zh-TW': zhTW,
   uk,
+  ru,
   es,
   'pt-BR': ptBR,
   ko,

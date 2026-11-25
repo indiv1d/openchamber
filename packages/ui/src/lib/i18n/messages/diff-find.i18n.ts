@@ -150,4 +150,15 @@ export const diffFindI18n = {
     'diffFind.searchingAria': 'הקבצים עדיין נטענים…',
     'diffFind.failedCount': 'קבצים שלא ניתן היה לחפש בהם: {count}',
   },
+
+  ru: {
+    'diffFind.placeholder': 'Поиск в изменениях',
+    'diffFind.nextAria': 'Следующее совпадение',
+    'diffFind.previousAria': 'Предыдущее совпадение',
+    'diffFind.closeAria': 'Закрыть поиск',
+    'diffFind.noMatches': 'Совпадений нет',
+    'diffFind.countAria': '{current} из {total}',
+    'diffFind.searchingAria': 'Файлы ещё читаются…',
+    'diffFind.failedCount': 'Файлы, которые не удалось проверить: {count}',
+  },
 };

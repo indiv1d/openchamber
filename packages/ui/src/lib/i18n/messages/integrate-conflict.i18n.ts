@@ -120,4 +120,13 @@ export const integrateConflictI18n = {
     'gitView.integrate.conflict.kept': 'Git לא הצליח להסיר את עותק העבודה הזמני. הוא מופיע עכשיו כ-worktree, ואפשר למחוק אותו שם.',
     'gitView.integrate.conflict.sessionsHeld': 'השילוב הסתיים, אבל שיחה בעותק הזמני עדיין לא נעצרה או הועברה לפרויקט. OpenChamber ממשיך לנסות; «המשך» מנסה שוב עכשיו.',
   },
+
+  ru: {
+    'gitView.integrate.conflict.changed': 'Эта интеграция продолжилась в другом окне. Вот её текущее состояние.',
+    'gitView.integrate.conflict.alreadyOpen': 'Интеграция этих веток уже открыта. Сначала продолжите или прервите её.',
+    'gitView.integrate.conflict.gone': 'Эта интеграция уже завершена или прервана в другом окне.',
+    'gitView.integrate.conflict.busy': 'Другое окно выполняет интеграцию коммитов в этом репозитории. Попробуйте снова, когда оно закончит.',
+    'gitView.integrate.conflict.kept': 'Git не смог удалить временную копию. Теперь она указана как рабочее дерево, и вы можете удалить её там.',
+    'gitView.integrate.conflict.sessionsHeld': 'Интеграция завершена, но сессия во временной копии ещё не остановлена и не перенесена в проект. OpenChamber продолжает пытаться; «Продолжить» повторит попытку сейчас.',
+  },
 };

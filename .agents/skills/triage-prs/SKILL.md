@@ -135,7 +135,7 @@ Maintainer decisions that settle a PR without asking again. A PR that contradict
 - **Any file type can be attached; nothing is uploaded before Send.** A file the model can't read (a PDF for a model without PDF input, a ZIP, any other type) follows one rule: at Send it is saved where OpenCode runs and reaches the agent as a path. No per-type setting, no upload at pick time ([#7309](https://github.com/openchamber/openchamber/pull/7309)).
 - **A Share from another app opens its new draft in the last-used project**, so the draft shows in the sidebar under that project and can be reopened; Chat only when there is no project ([#7323](https://github.com/openchamber/openchamber/pull/7323)).
 - **"Last turn" in Changes always means the latest turn.** Opening an older turn's diff from a file chip marks that selection separately; it never relabels or recounts "Last turn" ([#7305](https://github.com/openchamber/openchamber/pull/7305)).
-- **Russian localization** is declined because of Russia's war against Ukraine; close with **russian-locale** below.
+- **Russian localization** ships with the app since 2026-11-25. A PR that adds or completes it is reviewed like any other translation change.
 - **A composer action that rewrites the user's prompt** with a model is declined: mid-session the agent already sees more than an optimizer would. Say that, without pointing at extensions. The opt-in system-prompt optimizer in Behavior settings is a separate feature ([#3602](https://github.com/openchamber/openchamber/pull/3602)).
 - **Theme files carry only colours, fonts and transitions** (`lib/theme/definition.ts`); per-component geometry stays in the components, so layout changes never break imported themes ([#5305](https://github.com/openchamber/openchamber/pull/5305)).
 - **Mobile list sheets never raise the keyboard on open**, a tap on search does: the keyboard opens by itself only where text entry is the screen's main task ([#5345](https://github.com/openchamber/openchamber/pull/5345), `ThemePicker.tsx`).
@@ -202,9 +202,4 @@ Canonical texts. Reuse verbatim, adjusting only bracketed parts.
 **oversized-split** (single PR bundling several concerns)
 > Closing this one. It bundles several unrelated concerns, [list], into a single [size] change across [n] files, which isn't reviewable in this form.
 
-**russian-locale** (any PR adding Russian localization: a standing decision, applied without re-asking; the maintainer's own words, "we" included)
-> We're not accepting Russian localization for OpenChamber.
->
-> This is an intentional maintainership decision due to Russia's ongoing war against Ukraine. We don't want to ship or maintain Russian UI support.
->
-> Closing.
+

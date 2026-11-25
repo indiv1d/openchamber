@@ -255,4 +255,22 @@ export const projectActionsI18n = {
     'projectActions.menu.agentBadge': 'סוכן',
     'projectActions.run.startedByAgent': 'הופעל על ידי הסוכן',
   },
+
+  ru: {
+    'settings.openchamber.keyboardShortcuts.action.open_project_actions.label': 'Открыть действия проекта',
+    'helpDialog.item.openProjectActions': 'Запустить или остановить действие проекта',
+    'projectActions.header.allActions': 'Все действия',
+    'projectActions.dialog.title': 'Действия проекта',
+    'projectActions.dialog.description': 'Запустите или остановите действие текущего проекта.',
+    'projectActions.dialog.placeholder': 'Поиск действий',
+    'projectActions.dialog.empty': 'Подходящих действий нет',
+    'projectActions.dialog.noProject': 'Откройте сессию в проекте, чтобы запускать его действия.',
+    'projectActions.dialog.configure': 'Настроить действия',
+    'projectActions.dialog.footer.toggle': 'запустить или остановить',
+    'commandPalette.item.openProjectActions': 'Действия проекта',
+    'commandPalette.item.runProjectAction': 'Запустить: {name}',
+    'commandPalette.item.stopProjectAction': 'Остановить: {name}',
+    'projectActions.menu.agentBadge': 'агентом',
+    'projectActions.run.startedByAgent': 'Запущено агентом',
+  },
 } as const;

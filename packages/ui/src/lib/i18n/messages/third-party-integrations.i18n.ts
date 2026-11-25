@@ -210,4 +210,19 @@ export const thirdPartyIntegrationI18n = {
     'settings.integrations.thirdParty.toast.removed': '{name} הוסר',
     'settings.integrations.thirdParty.toast.actionFailed': 'לא ניתן היה לעדכן את השילוב',
   },
+
+  ru: {
+    'settings.integrations.thirdParty.actions.install': 'Установить',
+    'settings.integrations.thirdParty.actions.update': 'Обновить',
+    'settings.integrations.thirdParty.actions.remove': 'Удалить',
+    'settings.integrations.thirdParty.actions.docs': 'Документация',
+    'settings.integrations.thirdParty.status.notInstalled': 'Не установлено',
+    'settings.integrations.thirdParty.status.installed': 'Установлено',
+    'settings.integrations.thirdParty.status.installedVersion': 'Установлено {version}',
+    'settings.integrations.thirdParty.status.updateAvailable': 'Доступно обновление: {version}',
+    'settings.integrations.thirdParty.toast.installed': '{name} установлено',
+    'settings.integrations.thirdParty.toast.updated': '{name} обновлено',
+    'settings.integrations.thirdParty.toast.removed': '{name} удалено',
+    'settings.integrations.thirdParty.toast.actionFailed': 'Не удалось обновить интеграцию',
+  },
 } as const;

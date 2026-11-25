@@ -169,4 +169,16 @@ export const settingsHintsI18n = {
     'settings.remoteInstances.clientAuth.addDevice.transport.lanNeedsDesktopAccess': '設定桌面 UI 密碼，並允許本機網路中的其他裝置開啟此應用程式。',
     'settings.remoteInstances.clientAuth.addDevice.transport.openNetworkSettings': '開啟網路設定',
   },
+
+  ru: {
+    'chat.auto.toast.unavailable.title': 'Авто недоступно',
+    'chat.auto.toast.unavailable.description': 'Ни один провайдер классификации не отвечает, поэтому чат переключился на другую модель.',
+    'chat.auto.toast.unavailable.action': 'Открыть настройки',
+    'smallModel.toast.unavailable.action': 'Открыть настройки',
+    'settings.skills.catalog.add.toast.privateRepoNoIdentity': 'Этот репозиторий приватный. Добавьте идентичность Git с доступом к нему и запустите сканирование снова.',
+    'settings.skills.catalog.add.toast.setUpIdentity': 'Настроить идентичность',
+    'settings.skills.catalog.shared.auth.identitiesHint': 'Настройте идентичности в разделе «Настройки → Git → Идентичности».',
+    'settings.remoteInstances.clientAuth.addDevice.transport.lanNeedsDesktopAccess': 'Задайте пароль интерфейса Desktop и разрешите другим устройствам в вашей локальной сети открывать это приложение.',
+    'settings.remoteInstances.clientAuth.addDevice.transport.openNetworkSettings': 'Открыть настройки сети',
+  },
 } as const;

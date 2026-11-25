@@ -12,6 +12,7 @@ const LOADERS = {
   'zh-CN': () => import('./copy/zh-CN'),
   'zh-TW': () => import('./copy/zh-TW'),
   uk: () => import('./copy/uk'),
+  ru: () => import('./copy/ru'),
   es: () => import('./copy/es'),
   'pt-BR': () => import('./copy/pt-BR'),
   ko: () => import('./copy/ko'),

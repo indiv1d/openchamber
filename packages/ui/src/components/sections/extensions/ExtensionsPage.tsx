@@ -58,7 +58,7 @@ type InstallSource =
 const isZipFile = (file: File): boolean => file.name.toLowerCase().endsWith('.zip');
 
 const WEBSITE_LOCALE_PATHS = {
-  uk: 'uk', 'zh-CN': 'zh', 'zh-TW': 'zh', es: 'es', 'pt-BR': 'pt', ko: 'ko',
+  uk: 'uk', ru: null, 'zh-CN': 'zh', 'zh-TW': 'zh', es: 'es', 'pt-BR': 'pt', ko: 'ko',
   pl: 'pl', fr: 'fr', ja: 'ja', de: 'de', tr: 'tr', nl: 'nl',
   en: null, ar: null, he: null,
 } as const satisfies Record<Locale, string | null>;

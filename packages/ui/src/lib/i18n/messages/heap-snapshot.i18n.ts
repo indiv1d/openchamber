@@ -180,4 +180,17 @@ export const heapSnapshotI18n = {
     'openCodeStatusDialog.heapSnapshot.pathCopied': 'הנתיב הועתק',
     'openCodeStatusDialog.heapSnapshot.copyFailed': 'לא ניתן להעתיק את הנתיב',
   },
+
+  ru: {
+    'openCodeStatusDialog.heapSnapshot.action': 'Сохранить снимок памяти OpenCode',
+    'openCodeStatusDialog.heapSnapshot.hint': 'Для отчётов о памяти. В файле могут быть ключи API, запросы и содержимое файлов, поэтому передавайте его приватно.',
+    'openCodeStatusDialog.heapSnapshot.writing': 'Запись снимка. OpenCode приостановлен до её завершения.',
+    'openCodeStatusDialog.heapSnapshot.written': 'Сохранено в {path}',
+    'openCodeStatusDialog.heapSnapshot.failed': 'OpenCode не удалось записать снимок.',
+    'openCodeStatusDialog.heapSnapshot.reveal': 'Показать в папке',
+    'openCodeStatusDialog.heapSnapshot.revealFailed': 'Не удалось открыть папку',
+    'openCodeStatusDialog.heapSnapshot.copyPath': 'Копировать путь',
+    'openCodeStatusDialog.heapSnapshot.pathCopied': 'Путь скопирован',
+    'openCodeStatusDialog.heapSnapshot.copyFailed': 'Не удалось скопировать путь',
+  },
 } as const;

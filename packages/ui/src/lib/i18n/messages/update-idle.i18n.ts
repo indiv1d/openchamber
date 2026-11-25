@@ -165,4 +165,16 @@ export const updateIdleI18n = {
     'settings.openchamber.about.field.autoUpdateDescription': 'הורדת עדכונים ברקע והתקנתם בעת יציאה מהאפליקציה.',
     'settings.openchamber.about.toast.autoUpdateNotSaved': 'לא ניתן לשמור את הגדרת העדכונים האוטומטיים.',
   },
+
+  ru: {
+    'updateDialog.actions.installWhenIdle': 'Установить в простое',
+    'updateDialog.actions.cancelIdleInstall': 'Отмена',
+    'updateDialog.idle.waiting': 'Ожидание, пока всё завершится',
+    'updateDialog.idle.countingOne': 'Установка через {seconds} секунду',
+    'updateDialog.idle.counting': 'Установка через {seconds} сек.',
+    'updateDialog.idle.reason.install-failed': 'Установка не завершилась. Загруженный файл на месте.',
+    'settings.openchamber.about.field.autoUpdate': 'Автоматические обновления',
+    'settings.openchamber.about.field.autoUpdateDescription': 'Скачивать обновления в фоне и устанавливать их при выходе.',
+    'settings.openchamber.about.toast.autoUpdateNotSaved': 'Не удалось сохранить настройку автоматических обновлений.',
+  },
 } as const;

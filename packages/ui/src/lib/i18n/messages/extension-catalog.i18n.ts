@@ -240,4 +240,21 @@ export const extensionCatalogI18n = {
     'settings.integrations.extensionCatalog.toast.enabled': '{name} הופעלה',
     'settings.integrations.extensionCatalog.toast.enableFailed': 'לא ניתן היה להפעיל את {name}',
   },
+
+  ru: {
+    'settings.integrations.extensionCatalog.title': 'Расширения OpenChamber',
+    'settings.integrations.extensionCatalog.info': 'Дополнительные расширения от команды OpenChamber. Установите здесь, и оно появится там, где вы им пользуетесь. Установленные расширения также перечислены в разделе «Настройки → Расширения».',
+    'settings.integrations.extensionCatalog.excalidraw.name': 'Excalidraw',
+    'settings.integrations.extensionCatalog.excalidraw.description': 'Рисуйте в файлах .excalidraw и рисунках Obsidian прямо в разделе «Файлы».',
+    'settings.integrations.extensionCatalog.resourceMonitor.name': 'Монитор ресурсов',
+    'settings.integrations.extensionCatalog.resourceMonitor.description': 'Процессор и память вашей машины, OpenChamber и серверов разработки.',
+    'settings.integrations.extensionCatalog.status.paused': 'Отключено',
+    'settings.integrations.extensionCatalog.status.needsApproval': 'Требуется одобрение',
+    'settings.integrations.extensionCatalog.actions.enable': 'Включить',
+    'settings.integrations.extensionCatalog.actions.manage': 'Открыть расширения',
+    'settings.integrations.extensionCatalog.dialog.remove.title': 'Удалить расширение',
+    'settings.integrations.extensionCatalog.dialog.remove.description': 'Удалить {name} из этого OpenChamber? Ваши файлы останутся как есть.',
+    'settings.integrations.extensionCatalog.toast.enabled': '{name} включено',
+    'settings.integrations.extensionCatalog.toast.enableFailed': 'Не удалось включить {name}',
+  },
 } as const;

@@ -27,7 +27,7 @@ Sections: Runtimes and backends, Platform scope, Localization, Composer, Session
 
 ## Localization
 
-- Russian localization is declined. The reply text is the *russian-locale* template in the `triage-prs` skill.
+- Russian localization is supported: the `ru` dictionary ships with the app, the language picker, the native menus and the docs. The maintainer replaced the earlier decline on 2026-11-25.
 
 ## Composer
 

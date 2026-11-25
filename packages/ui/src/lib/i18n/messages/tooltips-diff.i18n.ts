@@ -270,4 +270,23 @@ export const tooltipsDiffI18n = {
     'contextTooltips.diff.resolveThread': '將此討論標記為已解決',
     'contextTooltips.diff.unresolveThread': '重新開啟此討論',
   },
+
+  ru: {
+    'contextTooltips.diff.scope': 'Выберите, какие изменения показывать',
+    'contextTooltips.diff.expandAll': 'Развернуть все файлы',
+    'contextTooltips.diff.collapseAll': 'Свернуть все файлы',
+    'contextTooltips.diff.review': 'Начать сессию проверки этих изменений',
+    'contextTooltips.diff.walkthrough': 'Разобрать эти изменения по шагам',
+    'contextTooltips.diff.reviewSubmit': 'Написать и отправить отзыв',
+    'contextTooltips.diff.branchChoose': 'Выберите ветку для сравнения',
+    'contextTooltips.diff.branchCompared': 'Сравнение с {branch}',
+    'contextTooltips.diff.commitShown': 'Показан коммит {hash}',
+    'contextTooltips.diff.hunkStage': 'Проиндексировать это изменение',
+    'contextTooltips.diff.hunkUnstage': 'Убрать это изменение из индекса',
+    'contextTooltips.diff.hunkDiscard': 'Отменить это изменение',
+    'contextTooltips.diff.openAsProject': 'Добавить эту папку в ваши проекты',
+    'contextTooltips.diff.attachThread': 'Добавить это обсуждение в ваше сообщение',
+    'contextTooltips.diff.resolveThread': 'Отметить это обсуждение как решённое',
+    'contextTooltips.diff.unresolveThread': 'Открыть это обсуждение снова',
+  },
 };

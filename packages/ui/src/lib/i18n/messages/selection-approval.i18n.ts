@@ -75,4 +75,10 @@ export const selectionApprovalI18n = {
     'settings.openchamber.visual.field.selectionApprovalText': '選取文字贊同文案',
     'settings.openchamber.visual.field.selectionApprovalTextInfo': '選取助手文字後，贊同快捷操作使用的自訂回饋。留空使用預設文案。',
   },
+
+  ru: {
+    'chat.textSelection.title.approveSelection': 'Одобрить выделенное',
+    'settings.openchamber.visual.field.selectionApprovalText': 'Текст одобрения выделенного',
+    'settings.openchamber.visual.field.selectionApprovalTextInfo': 'Свой текст для сочетания клавиш одобрения выделенного текста ассистента. Оставьте пустым, чтобы использовать текст по умолчанию.',
+  },
 };

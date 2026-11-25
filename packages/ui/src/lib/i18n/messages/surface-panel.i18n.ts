@@ -255,4 +255,22 @@ export const surfacePanelI18n = {
     'contextPanel.surface.ended.extension-unavailable': 'ההרחבה אינה זמינה. יש לבדוק בהגדרות ← הרחבות.',
     'contextPanel.surface.ended.host-shutdown': 'OpenChamber נסגר.',
   },
+
+  ru: {
+    'contextPanel.surface.unavailable': 'Представление этого расширения недоступно. Проверьте, что оно включено и одобрено в разделе «Настройки → Расширения».',
+    'contextPanel.surface.status.connecting': 'Подключение…',
+    'contextPanel.surface.status.reconnecting': 'Соединение потеряно. Переподключение…',
+    'contextPanel.surface.status.ready': 'Щёлкните или начните вводить, чтобы получить управление',
+    'contextPanel.surface.status.readyFocused': 'Вводите текст, чтобы управлять поверхностью; щёлкните снаружи, чтобы выйти',
+    'contextPanel.surface.status.readyTouch': 'Коснитесь, чтобы получить управление',
+    'contextPanel.surface.status.agentWorking': 'Агент работает',
+    'contextPanel.surface.status.youControl': 'Управление у вас',
+    'contextPanel.surface.status.otherControls': 'Управление на другом устройстве',
+    'contextPanel.surface.handBack': 'Вернуть агенту',
+    'contextPanel.surface.retry': 'Попробовать снова',
+    'contextPanel.surface.canvasAria': 'Живой просмотр {name}',
+    'contextPanel.surface.ended.service-stopped': 'Сервис расширения остановлен.',
+    'contextPanel.surface.ended.extension-unavailable': 'Расширение недоступно. Проверьте «Настройки → Расширения».',
+    'contextPanel.surface.ended.host-shutdown': 'OpenChamber завершает работу.',
+  },
 } as const;
