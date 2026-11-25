@@ -24,7 +24,9 @@ const REQUIRED_FILES = [
 ];
 
 const RIPGREP_PLATFORM_PACKAGE = /(?:^|\/)node_modules\/@vscode\/ripgrep-[^/]+\//;
-const RIPGREP_BINARY = process.platform === 'win32' ? 'rg.exe' : 'rg';
+const ripgrepBinaryForTarget = (target) => (
+  (target?.platform ?? process.platform) === 'win32' ? 'rg.exe' : 'rg'
+);
 
 const REQUIRED_UNPACKED_FILES = [
   `${WEB_PACKAGE}/build/server/lib/git/credential-helper.js`,
@@ -103,7 +105,7 @@ const verifyPackagedAppContents = (resourcesPath, target) => {
       problems.push(`${required} is missing from app.asar.unpacked`);
     }
   }
-  const ripgrep = path.join(resourcesPath, 'ripgrep', RIPGREP_BINARY);
+  const ripgrep = path.join(resourcesPath, 'ripgrep', ripgrepBinaryForTarget(target));
   if (!fs.existsSync(ripgrep)) {
     problems.push(`${ripgrep} is missing; run prepare:ripgrep before packaging`);
   }
@@ -112,4 +114,4 @@ const verifyPackagedAppContents = (resourcesPath, target) => {
   }
 };
 
-module.exports = { readAsarFiles, findPackagedAppContentProblems, verifyPackagedAppContents };
+module.exports = { readAsarFiles, findPackagedAppContentProblems, ripgrepBinaryForTarget, verifyPackagedAppContents };

@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { test } = require('node:test');
-const { readAsarFiles, findPackagedAppContentProblems } = require('./packaged-app-contents.cjs');
+const { readAsarFiles, findPackagedAppContentProblems, ripgrepBinaryForTarget } = require('./packaged-app-contents.cjs');
 
 const web = 'node_modules/@openchamber/web';
 const helpers = [
@@ -115,6 +115,12 @@ test('a missing server entry or a packed git helper is reported', () => {
     `${web}/build/server/index.js is missing`,
     `${helpers[0]} must be unpacked from the asar`,
   ]);
+});
+
+test('checks ripgrep for the packaged platform, not the build host', () => {
+  assert.equal(ripgrepBinaryForTarget({ platform: 'win32' }), 'rg.exe');
+  assert.equal(ripgrepBinaryForTarget({ platform: 'linux' }), 'rg');
+  assert.equal(ripgrepBinaryForTarget({ platform: 'darwin' }), 'rg');
 });
 
 test('reads nested files and the unpacked flag from an asar header', () => {
