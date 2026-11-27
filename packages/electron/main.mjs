@@ -165,7 +165,7 @@ const execFileAsync = promisify(execFile);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-process.env.OPENCHAMBER_UPDATES_DISABLED = '1';
+process.env.OPENCHAMBER_UPDATES_DISABLED ??= '0';
 // external: #3399 Increase Node auto-family connection timeout because 250 ms aborts handshakes to distant providers.
 applyConnectAttemptTimeout();
 

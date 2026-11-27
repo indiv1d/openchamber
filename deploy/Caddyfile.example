@@ -1,0 +1,22 @@
+# Example Caddy site for the desktop update feed.
+#
+# The path below must match UPDATER_URL in deploy/lib.sh:
+#   https://openchamber.update.indi.one/desktop/stable/
+# and OPENCHAMBER_UPDATE_ROOT on the build host:
+#   /srv/openchamber/updates/desktop/stable/
+openchamber.update.indi.one {
+	root * /srv/openchamber/updates
+	file_server
+
+	# The updater must see a new manifest right after a release.
+	@manifests path *.yml
+	header @manifests Cache-Control "no-store"
+
+	# Artifact names carry the version, so they never change in place.
+	@artifacts path *.exe *.zip *.dmg *.blockmap *.AppImage *.deb *.rpm
+	header @artifacts Cache-Control "public, max-age=31536000, immutable"
+
+	log {
+		output file /var/log/caddy/openchamber-updates.log
+	}
+}

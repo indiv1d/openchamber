@@ -23,12 +23,14 @@ cd "$ROOT"
 bun install --frozen-lockfile
 cd packages/electron
 export CSC_IDENTITY_AUTO_DISCOVERY=false
+export OPENCHAMBER_UPDATER_URL="$UPDATER_URL"
 bun run build:web-assets
 bun run prepare:opencode-server
 bun run verify:opencode-server
 bun run prepare:ripgrep
 bun run bundle:main
 bun run rebuild:native
+rm -rf dist
 bunx electron-builder --mac "--$arch" --publish=never -c.mac.notarize=false
 bun run verify:opencode-server:packaged
 

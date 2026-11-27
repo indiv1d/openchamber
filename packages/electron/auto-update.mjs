@@ -1,4 +1,5 @@
 import { downloadPendingDesktopUpdate } from './updater-check.mjs';
+import { CUSTOM_UPDATER_FEED } from './updater-feed.mjs';
 
 const QUIT_INSTALL_FALLBACK_MS = 5_000;
 
@@ -133,7 +134,7 @@ export const handleDesktopUpdatePreferenceCommand = async ({
   onAutoUpdateEnabled,
 }) => {
   if (command === 'desktop_get_update_channel') {
-    return { channel: readUpdateChannel() };
+    return { channel: readUpdateChannel(), canarySupported: !CUSTOM_UPDATER_FEED };
   }
   if (command === 'desktop_set_update_channel') {
     if (!isUpdateChannel(args?.channel)) throw new Error('Unknown update channel');

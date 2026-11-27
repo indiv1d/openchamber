@@ -12,14 +12,15 @@ import { AboutLogo } from '@/components/ui/AboutLogo';
 import { Icon } from "@/components/icon/Icon";
 import { Spinner } from '@/components/ui/spinner';
 import { getCurrentIntlLocale, useI18n } from '@/lib/i18n';
-import { getDesktopUpdateChannel, setDesktopUpdateChannel } from '@/lib/desktop';
+import { setDesktopUpdateChannel } from '@/lib/desktop';
 import { formatCanaryBuild, parseCanaryVersion, type UpdateChannel } from '@/lib/updateChannel';
 import { runtimeFetch } from '@/lib/runtime-fetch';
-import { loadDesktopSettings, updateDesktopSettings } from '@/lib/persistence';
+import { updateDesktopSettings } from '@/lib/persistence';
 import { copyTextToClipboard } from '@/lib/clipboard';
 import { reloadOpenCodeConfiguration } from '@/stores/useAgentsStore';
 import { fetchOpenCodeUpgradeStatus, runOpenCodeUpgrade, type OpenCodeUpgradeStatus } from '@/components/update/openCodeUpgrade';
 import { useDesktopRemoteHostActive } from '@/hooks/useDesktopRemoteHostActive';
+import { useUpdateChannelChoice } from '@/hooks/useUpdateChannelChoice';
 import { getDesktopAppVersion } from '@/lib/desktopNative';
 import { getUpdateCheckErrorMessage } from '@/lib/updateCheckError';
 import { InstanceServiceUrls } from './InstanceServiceUrls';
@@ -39,12 +40,6 @@ const DISCORD_URL = 'https://discord.gg/ZYRSdnwwKA';
 const X_URL = 'https://x.com/openchamber_dev';
 
 const MIN_CHECKING_DURATION = 800;
-
-const loadServerUpdateChannel = async (serverVersion: string): Promise<UpdateChannel | null> => {
-  const settings = await loadDesktopSettings();
-  if (!settings) return null;
-  return settings.serverUpdateChannel ?? (parseCanaryVersion(serverVersion) ? 'canary' : 'stable');
-};
 
 type ConnectedServerUpdate = {
   info: UpdateInfo | null;
@@ -256,18 +251,11 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
   const isDesktopApp = updateStore.runtimeType === 'desktop';
   const [isWebServer, setIsWebServer] = React.useState(false);
   const isNpmServer = updateStore.runtimeType === 'web' && isWebServer && openChamberVersion !== null;
-  const [updateChannel, setUpdateChannel] = React.useState<UpdateChannel | null>(null);
-  React.useEffect(() => {
-    if (!isDesktopApp && !isNpmServer) return;
-    let cancelled = false;
-    const load = isDesktopApp ? getDesktopUpdateChannel() : loadServerUpdateChannel(openChamberVersion ?? '');
-    void load.then((channel) => {
-      if (!cancelled) setUpdateChannel(channel);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [isDesktopApp, isNpmServer, openChamberVersion]);
+  const { updateChannel, canarySupported, setUpdateChannel } = useUpdateChannelChoice({
+    isDesktopApp,
+    isNpmServer,
+    serverVersion: openChamberVersion,
+  });
   const openCode = useOpenCodeUpgrade(t('opencodeUpdate.toast.failed.description'));
   const openCodeVersion = openCode.status?.currentVersion ?? null;
   const openCodeUpdateVersion = openCode.phase.kind === 'installed' ? null : openCode.status?.availableVersion ?? null;
@@ -324,7 +312,9 @@ export const AboutSettings: React.FC<AboutSettingsProps> = ({ initialUpdateDialo
       className="flex-nowrap"
       options={[
         { value: 'stable', label: t('settings.openchamber.about.option.updateChannel.stable') },
-        { value: 'canary', label: t('settings.openchamber.about.option.updateChannel.canary'), selectedClassName: 'bg-[var(--brand-canary)] text-[var(--brand-canary-foreground)] hover:bg-[var(--brand-canary)] hover:text-[var(--brand-canary-foreground)]' },
+        ...(canarySupported
+          ? [{ value: 'canary' as const, label: t('settings.openchamber.about.option.updateChannel.canary'), selectedClassName: 'bg-[var(--brand-canary)] text-[var(--brand-canary-foreground)] hover:bg-[var(--brand-canary)] hover:text-[var(--brand-canary-foreground)]' }]
+          : []),
       ]}
     />
   );

@@ -18,7 +18,7 @@ docker run --rm \
   -w /app \
   -e NODE_OPTIONS=--max-old-space-size=4096 \
   -e OPENCHAMBER_TARGET_ARCH=x64 \
-  -e OPENCHAMBER_UPDATES_DISABLED=1 \
+  -e OPENCHAMBER_UPDATER_URL="$UPDATER_URL" \
   openchamber-builder-linux bash -lc '
     set -euo pipefail
     bun install --frozen-lockfile
@@ -29,6 +29,7 @@ docker run --rm \
     bun run prepare:ripgrep
     bun run bundle:main
     bun run rebuild:native
+    rm -rf dist
     node ./scripts/package.mjs --linux --x64 --publish=never
     bun run verify:opencode-server:packaged
     bun run verify:linux-appimage

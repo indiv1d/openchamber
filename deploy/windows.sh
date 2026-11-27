@@ -20,6 +20,7 @@ case "$(uname -s)" in
       -w /app \
       -e NODE_OPTIONS=--max-old-space-size=4096 \
       -e OPENCHAMBER_TARGET_ARCH=x64 \
+      -e OPENCHAMBER_UPDATER_URL="$UPDATER_URL" \
       -e OPENCHAMBER_OPENCODE_SERVER_PLATFORM=win32 \
       -e OPENCHAMBER_TARGET_PLATFORM=win32 \
       -e ELECTRON_BUILDER_ARCH=x64 \
@@ -36,6 +37,7 @@ case "$(uname -s)" in
         cd packages/electron
         bun run prepare:opencode-server
         bun run prepare:ripgrep
+        rm -rf dist
         node ./scripts/package.mjs --win --x64 --publish=never
       '
     log "cross-build cannot verify the packaged Windows server; run the Windows host path to verify"
@@ -49,6 +51,7 @@ case "$(uname -s)" in
     bun install --frozen-lockfile
     cd packages/electron
     export OPENCHAMBER_TARGET_ARCH=x64
+    export OPENCHAMBER_UPDATER_URL="$UPDATER_URL"
     export CSC_IDENTITY_AUTO_DISCOVERY=false
     bun run build:web-assets
     bun run prepare:opencode-server
@@ -56,6 +59,7 @@ case "$(uname -s)" in
     bun run prepare:ripgrep
     bun run bundle:main
     node ./scripts/rebuild-native.mjs
+    rm -rf dist
     node ./scripts/package.mjs --win --x64 --publish=never
     bun run verify:opencode-server:packaged
     ;;

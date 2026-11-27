@@ -23,15 +23,24 @@ export const CANARY_MIRROR_UPDATER_FEED = Object.freeze({
 
 export const MIRROR_FAILURE_BACKOFF_MS = 60 * 60 * 1000;
 
-export const pickUpdaterSource = ({ mirrorFailedAt = null, now = Date.now() } = {}) => (
-  mirrorFailedAt === null || now - mirrorFailedAt >= MIRROR_FAILURE_BACKOFF_MS ? 'mirror' : 'github'
+const customUpdaterUrl = String(process.env.OPENCHAMBER_UPDATER_URL ?? '').trim();
+
+export const CUSTOM_UPDATER_FEED = customUpdaterUrl
+  ? Object.freeze({ provider: 'generic', url: customUpdaterUrl })
+  : null;
+
+export const pickUpdaterSource = ({ mirrorFailedAt = null, now = Date.now(), customUrl = customUpdaterUrl } = {}) => (
+  customUrl
+    ? 'custom'
+    : (mirrorFailedAt === null || now - mirrorFailedAt >= MIRROR_FAILURE_BACKOFF_MS ? 'mirror' : 'github')
 );
 
 export const isUpdateChannel = (value) => value === 'stable' || value === 'canary';
 
 export const isCanaryVersion = (version) => /-canary\./.test(String(version ?? ''));
 
-export const normalizeUpdateChannel = (value, appVersion) => {
+export const normalizeUpdateChannel = (value, appVersion, customFeed = CUSTOM_UPDATER_FEED !== null) => {
+  if (customFeed) return 'stable';
   if (isUpdateChannel(value)) return value;
   return isCanaryVersion(appVersion) ? 'canary' : 'stable';
 };
@@ -67,16 +76,18 @@ export const resolveUpdaterFeed = ({
   testBuild = false,
   channel = 'stable',
   source = 'github',
+  customUrl = customUpdaterUrl,
 } = {}) => {
+  if (environment.OPENCHAMBER_E2E === '1'
+    && testBuild === true) {
+    const url = parseLoopbackUpdaterUrl(environment.OPENCHAMBER_UPDATER_E2E_URL);
+    if (url) return { provider: 'generic', url };
+  }
+
+  if (customUrl) return { provider: 'generic', url: customUrl };
+
   const productionFeed = channel === 'canary'
     ? (source === 'mirror' ? CANARY_MIRROR_UPDATER_FEED : CANARY_UPDATER_FEED)
     : (source === 'mirror' ? STABLE_MIRROR_UPDATER_FEED : PRODUCTION_UPDATER_FEED);
-  if (environment.OPENCHAMBER_E2E !== '1'
-    || testBuild !== true) {
-    return productionFeed;
-  }
-
-  const url = parseLoopbackUpdaterUrl(environment.OPENCHAMBER_UPDATER_E2E_URL);
-  if (!url) return productionFeed;
-  return { provider: 'generic', url };
+  return productionFeed;
 };

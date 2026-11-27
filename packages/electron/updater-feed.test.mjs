@@ -65,8 +65,7 @@ test('requires the complete E2E environment and embedded build-marker conjunctio
   for (const input of cases) assert.equal(resolveUpdaterFeed(input), PRODUCTION_UPDATER_FEED);
 });
 
-test('accepts only credential-free loopback HTTP(S) URLs', () => {
-  assert.equal(parseLoopbackUpdaterUrl('http://127.0.0.1:8080/feed'), 'http://127.0.0.1:8080/feed');
+test('accepts only credential-free loopback HTTP(S) URLs', () => {  assert.equal(parseLoopbackUpdaterUrl('http://127.0.0.1:8080/feed'), 'http://127.0.0.1:8080/feed');
   assert.equal(parseLoopbackUpdaterUrl('https://127.255.0.1/feed/'), 'https://127.255.0.1/feed/');
   assert.equal(parseLoopbackUpdaterUrl('http://[::1]:8080/feed'), 'http://[::1]:8080/feed');
 
@@ -115,4 +114,39 @@ test('both channels read the mirror, and GitHub for an hour after the mirror fai
   assert.equal(STABLE_MIRROR_UPDATER_FEED.url, 'https://downloads.openchamber.dev/desktop/stable/');
   assert.equal(CANARY_MIRROR_UPDATER_FEED.url, 'https://downloads.openchamber.dev/desktop/canary/');
   assert.equal(resolveUpdaterFeed({ environment: overrideEnvironment, testBuild: true, channel: 'stable', source: 'mirror' }).url, overrideEnvironment.OPENCHAMBER_UPDATER_E2E_URL);
+});
+
+test('a fork feed replaces both upstream sources on every channel', () => {
+  const url = 'https://openchamber.update.indi.one/desktop/stable/';
+  assert.deepEqual(resolveUpdaterFeed({ customUrl: url }), { provider: 'generic', url });
+  assert.deepEqual(resolveUpdaterFeed({ customUrl: url, channel: 'canary', source: 'github' }), { provider: 'generic', url });
+  assert.deepEqual(resolveUpdaterFeed({ customUrl: url, channel: 'stable', source: 'mirror' }), { provider: 'generic', url });
+  assert.equal(pickUpdaterSource({ customUrl: url }), 'custom');
+  assert.equal(pickUpdaterSource({ customUrl: url, mirrorFailedAt: Date.now() }), 'custom');
+});
+
+test('the loopback E2E feed still wins over a fork feed in a test build', () => {
+  const url = 'https://openchamber.update.indi.one/desktop/stable/';
+  assert.deepEqual(resolveUpdaterFeed({
+    environment: overrideEnvironment,
+    testBuild: true,
+    customUrl: url,
+  }), {
+    provider: 'generic',
+    url: overrideEnvironment.OPENCHAMBER_UPDATER_E2E_URL,
+  });
+  assert.deepEqual(resolveUpdaterFeed({
+    environment: { OPENCHAMBER_E2E: '1' },
+    testBuild: false,
+    customUrl: url,
+  }), {
+    provider: 'generic',
+    url,
+  });
+});
+
+test('a fork build reads the Stable channel whatever the saved choice is', () => {
+  assert.equal(normalizeUpdateChannel('canary', '2.8.1-fork.2', true), 'stable');
+  assert.equal(normalizeUpdateChannel(undefined, '2.8.1-fork.2', true), 'stable');
+  assert.equal(normalizeUpdateChannel('canary', '2.8.1', false), 'canary');
 });

@@ -233,19 +233,6 @@ const parseUpdateChannelStatus = (result: UpdateChannelStatus | null): UpdateCha
   isUpdateChannel(result?.channel) ? result.channel : null
 );
 
-export const getDesktopUpdateChannel = async (): Promise<UpdateChannel | null> => {
-  if (!canUseElectronDesktopIPC() || !isDesktopLocalOriginActive()) {
-    return null;
-  }
-
-  try {
-    return parseUpdateChannelStatus(await invokeDesktop<UpdateChannelStatus>('desktop_get_update_channel'));
-  } catch (error) {
-    console.warn('Failed to get the update channel', error);
-    return null;
-  }
-};
-
 export const setDesktopUpdateChannel = async (channel: UpdateChannel): Promise<UpdateChannel | null> => {
   if (!canUseElectronDesktopIPC() || !isDesktopLocalOriginActive()) {
     return null;
