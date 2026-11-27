@@ -1430,6 +1430,8 @@ export const sidebarSectionsI18n = {
     "sessions.sidebar.sections.alsoInProjects": "Также показывать в проектах",
     "sessions.sidebar.sections.customName": "Своя",
     "sessions.sidebar.sections.alsoInProjectsShort": "Также в проектах",
+    "sessions.sidebar.sections.alsoInWorkShort": "Также в работе",
+    "sessions.sidebar.sections.alsoInWork": "Разрешить закреплённым сессиям и worktree попадать в работу",
     "sessions.sidebar.sections.orderHint": "Перетащите для сортировки.",
     "sessions.sidebar.sections.choosePages": "Выберите страницы",
     "sessions.sidebar.sections.link.tracker": "Задача в трекере",

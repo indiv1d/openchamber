@@ -328,6 +328,7 @@ export const htmlRenderI18n = {
     'chat.htmlRender.chatSentEarlier': 'Вы написали в чате до этой страницы',
     'chat.htmlRender.unanswered': 'Без ответа',
     'chat.htmlRender.notDrawn': 'Возвращено агенту на исправление',
+    'chat.htmlRender.pageNotDrawn': 'Эту страницу не удалось отрисовать.',
     'chat.htmlRender.decline': 'Отклонить',
     'chat.htmlRender.declined': 'Отклонено',
     'chat.htmlRender.undelivered': 'ещё не доставлено агенту',

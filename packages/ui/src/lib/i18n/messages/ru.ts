@@ -67,6 +67,7 @@ import { contextWindowI18n } from './context-window.i18n';
 import { markdownOutlineI18n } from './markdown-outline.i18n';
 import { markdownGithubI18n } from './markdown-github.i18n';
 import { autocompleteScopeI18n } from './autocomplete-scope.i18n';
+import { chatExchangeI18n } from './chat-exchange.i18n';
 import { integrateConflictI18n } from './integrate-conflict.i18n';
 import { workflowsI18n } from './workflows.i18n';
 import { subagentsI18n } from './subagents.i18n';
@@ -280,6 +281,7 @@ export const dict = {
   ...markdownOutlineI18n['ru'],
   ...markdownGithubI18n['ru'],
   ...autocompleteScopeI18n['ru'],
+  ...chatExchangeI18n['ru'],
   ...integrateConflictI18n['ru'],
   ...workflowsI18n['ru'],
   ...subagentsI18n['ru'],
@@ -441,10 +443,6 @@ export const dict = {
   "mobile.menu.update": "Обновить",
   "mobile.menu.settings": "Настройки",
   "mobile.sessions.newChatCta": "Новый чат в {project}",
-  "mobile.sessions.dateGroup.today": "Сегодня",
-  "mobile.sessions.dateGroup.yesterday": "Вчера",
-  "mobile.sessions.dateGroup.thisWeek": "Ранее на этой неделе",
-  "mobile.sessions.dateGroup.older": "Раньше",
   "mobile.sessions.section.worktrees": "Worktree",
   "mobile.sessions.section.otherProjects": "Сменить проект",
   "mobile.sessions.section.projects": "Проекты",
@@ -749,6 +747,7 @@ export const dict = {
   "sessions.sidebar.empty.noMatches.description": "Попробуйте другое название или ветку.",
   "sessions.sidebar.activity.chatsTitle": "Чаты",
   "sessions.sidebar.activity.chatsEmpty": "Чатов пока нет.",
+  "sessions.sidebar.timeline.noSessionsYet": "Пока нет сессий",
   "chat.chatInput.chooseProject": "Выберите проект",
   "sessions.sidebar.header.projectDisplay.label": "Показывать проекты",
   "sessions.sidebar.header.projectDisplay.all": "Все проекты",
@@ -892,6 +891,8 @@ export const dict = {
   "sessions.sidebar.session.status.movingToWorktree": "Сессия перемещается в новый worktree",
   "sessions.sidebar.session.status.permissionRequired": "Требуется разрешение",
   "sessions.sidebar.session.status.questionPending": "Неотвеченный вопрос",
+  "sessions.sidebar.session.status.permissionRequiredOpen": "Требуется разрешение. Открывает сессию, которая его запрашивает",
+  "sessions.sidebar.session.status.questionPendingOpen": "Есть вопрос. Открывает сессию, которая его задаёт",
   "sessions.sidebar.session.status.activeFor": "Активна {duration}",
   "sessions.sidebar.session.status.lastTurnDuration": "Последний ход занял {duration}",
   "sessions.sidebar.session.subsessions.collapse": "Свернуть подсессии",
@@ -1678,6 +1679,7 @@ export const dict = {
   "contextPanel.browser.annotate.intro": "Это размеченный фрагмент из встроенного браузера.",
   "contextPanel.browser.annotate.attached": "Аннотация прикреплена к чату",
   "contextPanel.browser.annotate.noSession": "Откройте сессию чата, прежде чем прикреплять аннотацию",
+  "contextPanel.browser.annotate.readOnly": "Этот чат доступен только для чтения, поэтому прикрепить аннотацию к нему нельзя",
   "contextPanel.browser.annotate.noPage": "Загрузите страницу, прежде чем размечать",
   "contextPanel.browser.annotate.failed": "Не удалось разметить эту страницу",
   "contextPanel.browser.annotate.tool.element": "Элемент",
@@ -2547,6 +2549,7 @@ export const dict = {
   "chat.revert.toast.undo": "Отменено до {preview}",
   "chat.revert.toast.redo": "Повторено",
   "chat.revert.toast.restored": "Все сообщения восстановлены",
+  "chat.revert.toast.filesUnchanged": "Чат откатан. Файлы не менялись.",
   "chat.toast.opencodeRestartInterrupted.title": "Чат прерван",
   "chat.toast.opencodeRestartInterrupted.description": "OpenCode перезапустился, пока ответ ещё выполнялся. Отправьте сообщение, чтобы продолжить.",
   "chat.toast.opencodeRestartInterrupted.autoResumeDescription": "OpenCode перезапустился, пока ответ ещё выполнялся. Чат продолжит работу автоматически; отправьте сообщение, если этого не произойдёт.",
@@ -2679,6 +2682,7 @@ export const dict = {
   "chat.textSelection.title.saveInsightToNotes": "Сохранить выделенный текст в заметки",
   "chat.messageBody.actions.revertAria": "Отменить до этого сообщения",
   "chat.messageBody.actions.revert": "Отменить отсюда",
+  "chat.messageBody.status.waitingForAgent": "Ждём агента",
   "chat.messageBody.actions.forkAria": "Ответвить от этого сообщения",
   "chat.messageBody.actions.fork": "Ответвить отсюда",
   "chat.messageBody.actions.copyMessageAria": "Копировать текст сообщения",
@@ -2767,6 +2771,7 @@ export const dict = {
   "chat.chatInput.toast.sendAttachmentsFailed": "Не удалось отправить вложения. Попробуйте меньше файлов или изображения меньшего размера.",
   "chat.chatInput.toast.messageSendFailed": "Не удалось отправить сообщение. Вложения восстановлены.",
   "chat.chatInput.toast.agentUnavailable": "Агент «{agent}» недоступен в папке этой сессии. Выберите другого агента и отправьте снова.",
+  "chat.chatInput.toast.skillLoadFailed": "Навык «{skill}» не загрузился с MCP-сервера. Проверьте, что сервер подключён в настройках, и отправьте снова.",
   "chat.chatInput.toast.noModelSelected": "Перед отправкой выберите провайдера и модель.",
   "chat.chatInput.toast.clipboardAttachFailed": "Не удалось прикрепить изображение из буфера обмена",
   "chat.chatInput.toast.clipboardTextAttachFailed": "Не удалось прикрепить вставленный текст как файл",

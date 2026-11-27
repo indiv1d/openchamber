@@ -518,6 +518,8 @@ export const sessionMenuHintsI18n = {
     'sessions.sidebar.session.menuHint.pin': 'Держать эту сессию вверху её списка.',
     'sessions.sidebar.session.menuHint.unpin': 'Снова сортировать эту сессию по недавней активности.',
     'sessions.sidebar.session.menuHint.track': 'Переместить в «В работе»: короткий список над всем остальным для того, за чем вы следите сейчас.',
+    'sessions.sidebar.session.menuHint.trackPinned': 'Закреплённые сессии не попадают в «В работе». Чтобы это изменить, включите «Также в работе» для раздела «Закреплённые» в настройке разделов.',
+    'sessions.sidebar.session.menuHint.trackPinnedTouch': 'Включите «Закреплённые могут быть в работе» в меню отображения.',
     'sessions.sidebar.session.menuHint.markDone': 'Убрать из «В работе» и вернуть на обычное место. Ничего не архивируется и не удаляется.',
     'sessions.sidebar.session.menuHint.exportMarkdown': 'Сохранить всю беседу в файл Markdown.',
     'sessions.sidebar.session.menuHint.moveToFolder': 'Поместить эту сессию в одну из папок проекта.',

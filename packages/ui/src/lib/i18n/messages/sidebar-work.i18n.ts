@@ -484,6 +484,7 @@ export const sidebarWorkI18n = {
   ru: {
     "sessions.sidebar.header.displayMode.keepWorkInPlace": "Также показывать в работе под проектами",
     "sessions.sidebar.header.displayMode.keepPinnedInPlace": "Также показывать закреплённые под проектами",
+    "sessions.sidebar.header.displayMode.pinnedInWork": "Закреплённые могут быть в работе",
     "sessions.sidebar.work.rename.failed": "Не удалось переименовать задачу",
     "sessions.sidebar.work.rename.placeholder": "Название задачи",
     "sessions.sidebar.work.rename.aria": "Переименовать задачу",
