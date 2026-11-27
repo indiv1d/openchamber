@@ -51,3 +51,14 @@ test('accepts matching native Linux architecture aliases', () => {
     environment: { OPENCHAMBER_TARGET_ARCH: 'amd64' },
   }).node, 'x64');
 });
+
+test('accepts a cross-architecture macOS target on a Linux host', () => {
+  assert.equal(resolveTargetArchitecture({
+    platform: 'linux',
+    hostArchitecture: 'x64',
+    environment: {
+      OPENCHAMBER_TARGET_ARCH: 'arm64',
+      OPENCHAMBER_TARGET_PLATFORM: 'darwin',
+    },
+  }).node, 'arm64');
+});

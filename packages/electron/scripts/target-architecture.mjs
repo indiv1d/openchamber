@@ -47,10 +47,11 @@ export const readElectronBuilderArchitecture = (args = []) => {
 };
 
 export const resolveTargetArchitecture = ({
+  environment = process.env,
   platform = process.platform,
   hostArchitecture = process.arch,
-  environment = process.env,
   builderArgs = [],
+  targetPlatform = environment.OPENCHAMBER_TARGET_PLATFORM || platform,
 } = {}) => {
   const host = normalizeTargetArchitecture(hostArchitecture, 'host architecture');
   const builderArchitecture = readElectronBuilderArchitecture(builderArgs);
@@ -67,7 +68,7 @@ export const resolveTargetArchitecture = ({
   }
 
   const target = normalizeTargetArchitecture(requestedValues[0] || host.node);
-  if (platform === 'linux' && target.node !== host.node) {
+  if (targetPlatform === 'linux' && target.node !== host.node) {
     throw new Error(
       `Linux AppImages must be built natively: host is ${host.node}, target is ${target.node}. `
       + `Run this build on a ${target.node} Linux host.`,

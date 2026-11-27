@@ -17,7 +17,11 @@ module.exports = (context) => {
   const executablePath = path.join(contentsPath, 'MacOS', appInfo.productFilename);
   setExecutableUuid(executablePath, appInfo.id);
   if (context.arch === Arch.arm64) {
-    execFileSync('codesign', ['--force', '--sign', '-', executablePath], { stdio: 'inherit' });
+    if (process.platform === 'darwin') {
+      execFileSync('codesign', ['--force', '--sign', '-', executablePath], { stdio: 'inherit' });
+    } else {
+      console.log('[electron] skipping codesign off macOS; the cross build signs the bundle with rcodesign');
+    }
   }
 
   const iconsDir = process.env.OPENCHAMBER_DESKTOP_CHANNEL === 'canary' ? 'icons-canary' : 'icons';

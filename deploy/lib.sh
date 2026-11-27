@@ -4,6 +4,9 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST="${DIST:-$ROOT/dist}"
 IMAGE="${IMAGE:-openchamber}"
+UPDATER_URL="${OPENCHAMBER_UPDATER_URL:-https://openchamber.update.indi.one/desktop/stable/}"
+UPDATE_ROOT="${OPENCHAMBER_UPDATE_ROOT:-/srv/openchamber/updates}"
+UPDATE_PUBLISH_DIR="${OPENCHAMBER_UPDATE_PUBLISH_DIR:-$UPDATE_ROOT/desktop/stable}"
 
 log() {
   printf '[deploy] %s\n' "$*"
